@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>利用GitHub Pages搭建的博客换电脑后怎么使用博客 | Morris Meng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Morris‘ blog">
+  <meta name="description" content="利用Github Pages + hexo 搭建博客，需要在github上创建一个仓库，xxx.github.io。 博客搭建好后在hexo配置文件中会生成一个public的文件夹。 这个文件夹里的内容会被上传到xxx.github.io这个仓库里。 也就是说，如果换电脑后将仓库克隆下来，你会发现，其实什么都没有，之前的配置什么的都没有。 换电脑后怎么继续维护自己的博客 大体思路是先将仓库克隆下来">
 <meta name="keywords" content="tool">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用GitHub Pages搭建的博客换电脑后怎么使用博客">
 <meta property="og:url" content="http://yoursite.com/2018/01/27/利用GitHub-Pages搭建的博客换电脑后怎么使用博客/index.html">
 <meta property="og:site_name" content="Morris Meng">
-<meta property="og:description" content="Morris‘ blog">
+<meta property="og:description" content="利用Github Pages + hexo 搭建博客，需要在github上创建一个仓库，xxx.github.io。 博客搭建好后在hexo配置文件中会生成一个public的文件夹。 这个文件夹里的内容会被上传到xxx.github.io这个仓库里。 也就是说，如果换电脑后将仓库克隆下来，你会发现，其实什么都没有，之前的配置什么的都没有。 换电脑后怎么继续维护自己的博客 大体思路是先将仓库克隆下来">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-27T13:53:08.000Z">
+<meta property="og:updated_time" content="2018-02-01T12:54:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用GitHub Pages搭建的博客换电脑后怎么使用博客">
-<meta name="twitter:description" content="Morris‘ blog">
+<meta name="twitter:description" content="利用Github Pages + hexo 搭建博客，需要在github上创建一个仓库，xxx.github.io。 博客搭建好后在hexo配置文件中会生成一个public的文件夹。 这个文件夹里的内容会被上传到xxx.github.io这个仓库里。 也就是说，如果换电脑后将仓库克隆下来，你会发现，其实什么都没有，之前的配置什么的都没有。 换电脑后怎么继续维护自己的博客 大体思路是先将仓库克隆下来">
   
     <link rel="alternative" href="/atom.xml" title="Morris Meng" type="application/atom+xml">
   
@@ -161,7 +161,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>利用Github Pages + hexo 搭建博客，需要在github上创建一个仓库，xxx.github.io。</p>
+<p>博客搭建好后在hexo配置文件中会生成一个public的文件夹。</p>
+<p>这个文件夹里的内容会被上传到xxx.github.io这个仓库里。</p>
+<p>也就是说，如果换电脑后将仓库克隆下来，你会发现，其实什么都没有，之前的配置什么的都没有。</p>
+<h2 id="换电脑后怎么继续维护自己的博客"><a href="#换电脑后怎么继续维护自己的博客" class="headerlink" title="换电脑后怎么继续维护自己的博客"></a>换电脑后怎么继续维护自己的博客</h2><blockquote>
+<p>大体思路是先将仓库克隆下来，然后删除里面所有文件，将原来仓库里的所有东西全部移进去。在本地机仓库配置相关环境，然后保存，上传。</p>
+</blockquote>
+<p>主要思路有如下三个步骤：</p>
+<h3 id="1、克隆仓库"><a href="#1、克隆仓库" class="headerlink" title="1、克隆仓库"></a>1、克隆仓库</h3><p>换一台新设备后，首先将博客仓库克隆至本地，然后删除里面所有文件。</p>
+<h3 id="2、xxx-github-io仓库"><a href="#2、xxx-github-io仓库" class="headerlink" title="2、xxx.github.io仓库"></a>2、xxx.github.io仓库</h3><p>将原来的配置好的电脑上的xxx.github.io中的所有文件都移至现在的仓库里。</p>
+<h3 id="3、配置环境"><a href="#3、配置环境" class="headerlink" title="3、配置环境"></a>3、配置环境</h3><p>因为克隆下来的仓库，本地并没有初始化hexo，所以不能用，所以需要在本地初始化一下hexo。</p>
+<p>如果没有安装相关环境的话还得再安装一下。</p>
+<p>初始化hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo</span><br></pre></td></tr></table></figure></p>
+<p>保存上传<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save #保存配置</span><br><span class="line">hexo d  #上传配置到gitHub</span><br></pre></td></tr></table></figure></p>
+<p>具体的怎么实现这三个步骤，各有不同，网上有人说创建两个分支的解决方案。也有专门创建另一个仓库用来存储博客里的配置等，每次换设备更新博客前先更新一下配置。看个人喜好，自己想办法吧。</p>
+<h2 id="换电脑后维护博客的注意事项"><a href="#换电脑后维护博客的注意事项" class="headerlink" title="换电脑后维护博客的注意事项"></a>换电脑后维护博客的注意事项</h2><p>1、每次更新博客前确保你的所有配置和文件都是最新的，不然的话保存上传了旧的文件配置等会覆盖之前的文件和配置。</p>
+<p>2、换电脑后直接执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<p>会将本地当前的博客状态,包括博文和配置上传到自己的博客。所以需要注意，别将旧的状态上传了。</p>
+
       
 
       
@@ -313,7 +331,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#换电脑后怎么继续维护自己的博客"><span class="toc-number">1.</span> <span class="toc-text">换电脑后怎么继续维护自己的博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、克隆仓库"><span class="toc-number">1.1.</span> <span class="toc-text">1、克隆仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、xxx-github-io仓库"><span class="toc-number">1.2.</span> <span class="toc-text">2、xxx.github.io仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、配置环境"><span class="toc-number">1.3.</span> <span class="toc-text">3、配置环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#换电脑后维护博客的注意事项"><span class="toc-number">2.</span> <span class="toc-text">换电脑后维护博客的注意事项</span></a></li></ol>
                     </div>
                 </span>
             </div>
