@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>类直接调用实例变量 | Morris Meng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、问题：1、NSUserDefaults是单例，但是为什么没有返回单例的类方法。 2、[NSUserDefaults standardUserDefaults]，这里的standardUserDefaults为什么是一个属性变量？ 3、怎么让一个类直接调用一个属性变量。 二、关键词class、属性变量、NSUserDefaults、@dynamic、单例 三、正文1、NSUserDefaults">
+  <meta name="description" content="一、问题：1、只有调用类方法才可以返回单例吗？不是 2、类可以直接调用属性变量吗？可以 3、怎么让一个类直接调用一个属性变量？单例 二、关键词class、属性变量、NSUserDefaults、@dynamic、单例 三、正文1、NSUserDefaults举例 我们知道类一般调用类方法，属性变量一般是通过对象调用的。属性变量可以用类直接调用吗？  NSUserDefaults是一个单例，我们一般">
 <meta name="keywords" content="OC-单例">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类直接调用实例变量">
 <meta property="og:url" content="http://yoursite.com/2018/02/01/单例类直接调用实例变量/index.html">
 <meta property="og:site_name" content="Morris Meng">
-<meta property="og:description" content="一、问题：1、NSUserDefaults是单例，但是为什么没有返回单例的类方法。 2、[NSUserDefaults standardUserDefaults]，这里的standardUserDefaults为什么是一个属性变量？ 3、怎么让一个类直接调用一个属性变量。 二、关键词class、属性变量、NSUserDefaults、@dynamic、单例 三、正文1、NSUserDefaults">
+<meta property="og:description" content="一、问题：1、只有调用类方法才可以返回单例吗？不是 2、类可以直接调用属性变量吗？可以 3、怎么让一个类直接调用一个属性变量？单例 二、关键词class、属性变量、NSUserDefaults、@dynamic、单例 三、正文1、NSUserDefaults举例 我们知道类一般调用类方法，属性变量一般是通过对象调用的。属性变量可以用类直接调用吗？  NSUserDefaults是一个单例，我们一般">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-01T12:20:41.000Z">
+<meta property="og:updated_time" content="2018-02-03T13:59:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类直接调用实例变量">
-<meta name="twitter:description" content="一、问题：1、NSUserDefaults是单例，但是为什么没有返回单例的类方法。 2、[NSUserDefaults standardUserDefaults]，这里的standardUserDefaults为什么是一个属性变量？ 3、怎么让一个类直接调用一个属性变量。 二、关键词class、属性变量、NSUserDefaults、@dynamic、单例 三、正文1、NSUserDefaults">
+<meta name="twitter:description" content="一、问题：1、只有调用类方法才可以返回单例吗？不是 2、类可以直接调用属性变量吗？可以 3、怎么让一个类直接调用一个属性变量？单例 二、关键词class、属性变量、NSUserDefaults、@dynamic、单例 三、正文1、NSUserDefaults举例 我们知道类一般调用类方法，属性变量一般是通过对象调用的。属性变量可以用类直接调用吗？  NSUserDefaults是一个单例，我们一般">
   
     <link rel="alternative" href="/atom.xml" title="Morris Meng" type="application/atom+xml">
   
@@ -161,9 +161,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、问题："><a href="#一、问题：" class="headerlink" title="一、问题："></a>一、问题：</h2><p>1、NSUserDefaults是单例，但是为什么没有返回单例的类方法。</p>
-<p>2、[NSUserDefaults standardUserDefaults]，这里的standardUserDefaults为什么是一个属性变量？</p>
-<p>3、怎么让一个类直接调用一个属性变量。</p>
+        <h2 id="一、问题："><a href="#一、问题：" class="headerlink" title="一、问题："></a>一、问题：</h2><p>1、只有调用类方法才可以返回单例吗？不是</p>
+<p>2、类可以直接调用属性变量吗？可以</p>
+<p>3、怎么让一个类直接调用一个属性变量？单例</p>
 <h2 id="二、关键词"><a href="#二、关键词" class="headerlink" title="二、关键词"></a>二、关键词</h2><p>class、属性变量、NSUserDefaults、@dynamic、单例</p>
 <h2 id="三、正文"><a href="#三、正文" class="headerlink" title="三、正文"></a>三、正文</h2><h3 id="1、NSUserDefaults举例"><a href="#1、NSUserDefaults举例" class="headerlink" title="1、NSUserDefaults举例"></a>1、NSUserDefaults举例</h3><blockquote>
 <p>我们知道类一般调用类方法，属性变量一般是通过对象调用的。属性变量可以用类直接调用吗？</p>

@@ -162,9 +162,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、问题："><a href="#一、问题：" class="headerlink" title="一、问题："></a>一、问题：</h2><p>1、NSUserDefaults是单例，但是为什么没有返回单例的类方法。</p>
-<p>2、[NSUserDefaults standardUserDefaults]，这里的standardUserDefaults为什么是一个属性变量？</p>
-<p>3、怎么让一个类直接调用一个属性变量。</p>
+        <h2 id="一、问题："><a href="#一、问题：" class="headerlink" title="一、问题："></a>一、问题：</h2><p>1、只有调用类方法才可以返回单例吗？不是</p>
+<p>2、类可以直接调用属性变量吗？可以</p>
+<p>3、怎么让一个类直接调用一个属性变量？单例</p>
 <h2 id="二、关键词"><a href="#二、关键词" class="headerlink" title="二、关键词"></a>二、关键词</h2><p>class、属性变量、NSUserDefaults、@dynamic、单例</p>
 <h2 id="三、正文"><a href="#三、正文" class="headerlink" title="三、正文"></a>三、正文</h2><h3 id="1、NSUserDefaults举例"><a href="#1、NSUserDefaults举例" class="headerlink" title="1、NSUserDefaults举例"></a>1、NSUserDefaults举例</h3><blockquote>
 <p>我们知道类一般调用类方法，属性变量一般是通过对象调用的。属性变量可以用类直接调用吗？</p>
