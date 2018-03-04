@@ -175,7 +175,8 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    //1、取出数据源</span><br><span class="line">    Person *p = self.dataSource[indexPath.row];</span><br><span class="line">    //2、根据不同的复用标识取出对应的cell</span><br><span class="line">    BaseCell *cell = nil;</span><br><span class="line">    cell = [tableView dequeueReusableCellWithIdentifier:p.cellReusedId];</span><br><span class="line">    //3、给cell赋值</span><br><span class="line">    [cell setPerson:p];</span><br><span class="line">    </span><br><span class="line">    return cell;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><a href="https://github.com/MorrisMeng/MultipleCells" target="_blank" rel="noopener">实现过程和代码示例</a></p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p><a href="https://github.com/MorrisMeng/MultipleCells" target="_blank" rel="noopener">实现过程和代码示例</a></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>只是一种思路而已，人是活的，代码是跳动的精灵，没有最好，只有更好！</p>
 
       
 
