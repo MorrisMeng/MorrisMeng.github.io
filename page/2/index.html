@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://Morris.com">
   <title>Morris Meng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Morris‘ blog">
 <meta name="keywords" content="iOS,OC,Swift,程序猿">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Morris Meng">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:url" content="http://Morris.com/page/2/index.html">
 <meta property="og:site_name" content="Morris Meng">
 <meta property="og:description" content="Morris‘ blog">
 <meta property="og:locale" content="zh-CN">
@@ -141,6 +141,114 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-单例类直接调用实例变量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/01/单例类直接调用实例变量/">类直接调用实例变量</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/01/单例类直接调用实例变量/" class="archive-article-date">
+  	<time datetime="2018-02-01T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、问题："><a href="#一、问题：" class="headerlink" title="一、问题："></a>一、问题：</h2><p>1、只有调用类方法才可以返回单例吗？不是</p>
+<p>2、类可以直接调用属性变量吗？可以</p>
+<p>3、怎么让一个类直接调用一个属性变量？单例</p>
+<h2 id="二、关键词"><a href="#二、关键词" class="headerlink" title="二、关键词"></a>二、关键词</h2><p>class、属性变量、NSUserDefaults、@dynamic、单例</p>
+<h2 id="三、正文"><a href="#三、正文" class="headerlink" title="三、正文"></a>三、正文</h2><h3 id="1、NSUserDefaults举例"><a href="#1、NSUserDefaults举例" class="headerlink" title="1、NSUserDefaults举例"></a>1、NSUserDefaults举例</h3><blockquote>
+<p>我们知道类一般调用类方法，属性变量一般是通过对象调用的。属性变量可以用类直接调用吗？</p>
+</blockquote>
+<p>NSUserDefaults是一个单例，我们一般用[NSUserDefaults standardUserDefaults]这样获取这个单例。</p>
+<p>在NSUserDefaults的文档中并没有提供一个返回一个单例的类方法，而是有一个用class修饰的属性变量standardUserDefaults。</p>
+<p>当我们使用[NSUserDefaults standardUserDefaults]时，实质上是用NSUserDefaults这个类直接调用了属性变量standardUserDefaults，通过调用属性变量返回一个NSUserDefaults的实例。具体是怎么回事呢？请看<a href="">NSUserDefaults单例内部实现原理</a></p>
+<p>摘自文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*!</span><br><span class="line"> +standardUserDefaults returns a global instance of NSUserDefaults configured to search the current application&apos;s search list.</span><br><span class="line"> */</span><br><span class="line">@property (class, readonly, strong) NSUserDefaults *standardUserDefaults;</span><br></pre></td></tr></table></figure></p>
+<p>这里的class关键字：</p>
+<ul>
+<li><p>class这个关键字在OC语言里比较少用，这里说的class不是大家常用的方法[类名 class]。</p>
+</li>
+<li><p>class也是一个用来修饰属性变量的关键字，如NSUserDefaults类里就用class修饰了standardUserDefaults这个属性变量：</p>
+</li>
+<li><p>class修饰符修饰属性变量，表示该属性变量是该类的一个变量，当然也是该类对象的属性变量。</p>
+</li>
+</ul>
+<hr>
+<h3 id="2、怎么才能让一个类直接调用它的属性变量"><a href="#2、怎么才能让一个类直接调用它的属性变量" class="headerlink" title="2、怎么才能让一个类直接调用它的属性变量"></a>2、怎么才能让一个类直接调用它的属性变量</h3><blockquote>
+<p>我们知道一般的，类是没法直接调用它的实例变量的，但是什么情况下可以呢。</p>
+</blockquote>
+<p>当一个类的实例变量使用calss修饰符修饰的情况下，类就可以直接调用该属性变量。</p>
+<p>但是当你用class修饰符修饰一个属性变量时，系统会报警告提示你：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class property &apos;xxx属性变量名&apos; requires method &apos;xxx属性变量名&apos; to be defined - use @dynamic or provide a method implementation in this class implementation</span><br></pre></td></tr></table></figure>
+<p>提示在@implementation里面添加@dynamic修饰该属性变量，要么需要实现该属性变量名为名的类方法，在这个类方法里返回该属性变量。</p>
+<p>用在@implementation里使用@dynamic+属性变量，告诉编译器，不用给该数形变量生成set、get方法。在当前情况下如果用@dynamic修饰，那么你的实例变量不能提供给外界使用。</p>
+<p>如果不用@dynamic，而是实现方法，返回这个实例变量的话就和MMUserDefaults如出一辙了。</p>
+<p>MMUserDefaults源文件里面肯定是实现了以下方法的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+ (NSUserDefaults *)standardUserDefaults &#123;</span><br><span class="line">    return [NSUserDefaults sharedUserDefaults];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方法里是不是这样写的不确定，但是肯定是返回了一个单例，也就是sharedUserDefaults在这个方法里面被返回了。所以当我们使用[NSUserDefaults standardUserDefaults]时候，就是调用的数形变量，类似于get到一个实例变量standardUserDefaults，而standardUserDefaults就作为一个单例每次被返回。</p>
+<h3 id="3、类直接调用属性变量一般使用场景"><a href="#3、类直接调用属性变量一般使用场景" class="headerlink" title="3、类直接调用属性变量一般使用场景"></a>3、类直接调用属性变量一般使用场景</h3><p>类直接调用属性变量这种不是很常见，但是是可以的。官方文档里都这样写，路子是不是有点野。当然这样写是有原因的，那就是NSUserDefaults是个单例，只有一个实例变量sharedUserDefaults，而且这个实例变量就是其本身。</p>
+<p>当然两个实例变量可以这样写吗，也是可以的，但是就不是很合理了，而且就麻烦了。单例的话这样写用一个词来形容：“恰到好处”，如果不是单例还这样写，就是“画蛇添足”了。</p>
+<h2 id="四、最后"><a href="#四、最后" class="headerlink" title="四、最后"></a>四、最后</h2><p>至此，我们对单例有了更深的认识，其实本篇文章的主要目的就是为了阐述单例的定义：一个类只有一个实例，而且这个实例对象就是该类本身。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">OC-单例</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/01/单例类直接调用实例变量/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-利用GitHub-Pages搭建的博客换电脑后怎么使用博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -288,7 +396,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server //hexo s</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate //hexo g</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy //hexo d</span><br></pre></td></tr></table></figure>
-<p>也就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章title&quot;</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<p>也就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章title&quot; 	//创建名为“xx”的文章</span><br><span class="line">hexo g	               //生成静态文件</span><br><span class="line">hexo s	               //启动服务器</span><br><span class="line">npm install hexo-deployer-git --save //</span><br><span class="line">hexo d                 //部署网站</span><br></pre></td></tr></table></figure></p>
 <p>如果报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot read property &apos;utcOffset&apos; of null</span><br><span class="line">    at Object.exports.timezone (/Users/Dry/Documents/MorrisMeng/blog/MorrisMeng.github.io/hexo/node_modules/hexo/lib/plugins/processor/common.js:44:40</span><br></pre></td></tr></table></figure></p>
 <p>可能是获取时间的时候出问题了，吧timezone设置成Shanghai就可以了，也不知道什么原因。</p>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>到这里一个简单的博客就基本搭建完成了，其实是在别人搭建好博客模板的基础上，利用GitHub GitPages来做了一个静态网页博客，用了别人的博客模板再此表示感谢。</p>
@@ -348,86 +456,9 @@
 
 
   
-    <article id="post-Love-Voice" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/25/Love-Voice/">love voice</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/25/Love-Voice/" class="archive-article-date">
-  	<time datetime="2018-01-25T06:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blogImg/hand.jpeg" alt="hand-w320"></p>
-<p>Morris: Hello Hongjuan , I love you so much ! Will you marry me?</p>
-<p>Hong: Yes i am .</p>
-<p>So ,let’s go to moon and take part in a wedding .</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">love</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/25/Love-Voice/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -522,6 +553,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">love</a>
               </li>
              
@@ -534,7 +569,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">
