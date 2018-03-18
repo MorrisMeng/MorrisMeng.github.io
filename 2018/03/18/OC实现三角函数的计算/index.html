@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://Morris.com">
-  <title>利用GitHub Pages搭建简单的博客 | Morris Meng</title>
+  <title>OC实现三角函数的计算 | Morris Meng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此文适合有点开发经验的小白或者电脑爱好者，知道markdown语法，知道gitHub的人群。 利用GitHub Pages，通过Hexo，使用GitHub上一些开源的主题模板，来搭建一个简单的个人博客。 1、git1brew install git 如果电脑上没有安装homebrew，先安装brew，然后更新git。 在GitHub上创建一个仓库，名字格式为：GitHub账户名.github.io">
-<meta name="keywords" content="tool">
+  <meta name="description" content="系统提供了函数计算三角函数，比如正弦sin()。 抽象一个类，计算三角函数值。 Caculator.h123456789101112131415161718192021222324252627#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface Caculator : NSObject/** 传入角度计算余弦值 @param angle 角度值 @re">
+<meta name="keywords" content="三角函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用GitHub Pages搭建简单的博客">
-<meta property="og:url" content="http://Morris.com/2018/01/25/利用GitHub-Pages搭建简单的博客/index.html">
+<meta property="og:title" content="OC实现三角函数的计算">
+<meta property="og:url" content="http://Morris.com/2018/03/18/OC实现三角函数的计算/index.html">
 <meta property="og:site_name" content="Morris Meng">
-<meta property="og:description" content="此文适合有点开发经验的小白或者电脑爱好者，知道markdown语法，知道gitHub的人群。 利用GitHub Pages，通过Hexo，使用GitHub上一些开源的主题模板，来搭建一个简单的个人博客。 1、git1brew install git 如果电脑上没有安装homebrew，先安装brew，然后更新git。 在GitHub上创建一个仓库，名字格式为：GitHub账户名.github.io">
+<meta property="og:description" content="系统提供了函数计算三角函数，比如正弦sin()。 抽象一个类，计算三角函数值。 Caculator.h123456789101112131415161718192021222324252627#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface Caculator : NSObject/** 传入角度计算余弦值 @param angle 角度值 @re">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-17T03:24:42.000Z">
+<meta property="og:updated_time" content="2018-03-18T07:14:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用GitHub Pages搭建简单的博客">
-<meta name="twitter:description" content="此文适合有点开发经验的小白或者电脑爱好者，知道markdown语法，知道gitHub的人群。 利用GitHub Pages，通过Hexo，使用GitHub上一些开源的主题模板，来搭建一个简单的个人博客。 1、git1brew install git 如果电脑上没有安装homebrew，先安装brew，然后更新git。 在GitHub上创建一个仓库，名字格式为：GitHub账户名.github.io">
+<meta name="twitter:title" content="OC实现三角函数的计算">
+<meta name="twitter:description" content="系统提供了函数计算三角函数，比如正弦sin()。 抽象一个类，计算三角函数值。 Caculator.h123456789101112131415161718192021222324252627#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface Caculator : NSObject/** 传入角度计算余弦值 @param angle 角度值 @re">
   
     <link rel="alternative" href="/atom.xml" title="Morris Meng" type="application/atom+xml">
   
@@ -141,68 +141,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-利用GitHub-Pages搭建简单的博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-OC实现三角函数的计算" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      利用GitHub Pages搭建简单的博客
+      OC实现三角函数的计算
     </h1>
   
 
         
-        <a href="/2018/01/25/利用GitHub-Pages搭建简单的博客/" class="archive-article-date">
-  	<time datetime="2018-01-25T07:54:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-25</time>
+        <a href="/2018/03/18/OC实现三角函数的计算/" class="archive-article-date">
+  	<time datetime="2018-03-18T07:00:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>此文适合有点开发经验的小白或者电脑爱好者，知道markdown语法，知道gitHub的人群。</p>
-<p>利用<a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>，通过<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a>，使用GitHub上一些开源的<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">主题模板</a>，来搭建一个简单的个人博客。</p>
-<h3 id="1、git"><a href="#1、git" class="headerlink" title="1、git"></a>1、git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
-<p>如果电脑上没有安装homebrew，先安装brew，然后更新git。</p>
-<p>在GitHub上创建一个仓库，名字格式为：GitHub账户名.github.io，并将此仓库克隆到本地。</p>
-<h3 id="2、安装Node"><a href="#2、安装Node" class="headerlink" title="2、安装Node"></a>2、安装Node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
-<p>node是用来生成静态页面的。如果提示已经安装，则用brew upgrad更新即可。</p>
-<p>验证安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v #查看node版本</span><br></pre></td></tr></table></figure></p>
-<h3 id="3、安装npm"><a href="#3、安装npm" class="headerlink" title="3、安装npm"></a>3、安装npm</h3><p><a href="https://www.npmjs.com.cn" target="_blank" rel="noopener">关于npm</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v	#查看npm版本</span><br></pre></td></tr></table></figure>
-<p>如若没安装，先安装。</p>
-<h3 id="4、Hexo安装与设置"><a href="#4、Hexo安装与设置" class="headerlink" title="4、Hexo安装与设置"></a>4、Hexo安装与设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g  #-g表示全局安装,npm默认为当前项目安装</span><br><span class="line">hexo version  #查看hexo版本</span><br></pre></td></tr></table></figure>
-<p>如报错Cannot find module，使用以下语句安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo --no-optional</span><br></pre></td></tr></table></figure>
-<p>cd到本地的GitHub账户名.github.io文件夹下，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo  #卡在waiting的话ctl+c就行</span><br></pre></td></tr></table></figure></p>
-<p>在GitHub账户名.github.io文件夹下会生成一个hexo文件夹</p>
-<p>cd到hexo，进入到hexo目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">hexo generate</span><br><span class="line">hexo server		 #卡主的话ctl+c</span><br></pre></td></tr></table></figure>
-<h3 id="5、更改主题"><a href="#5、更改主题" class="headerlink" title="5、更改主题"></a>5、更改主题</h3><p>cd到hexo目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure></p>
-<p>将想要的主题直接克隆到了hexo/themes下。</p>
-<p>这里有很多<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">主题</a>提供选择。</p>
-<p>将主题克隆下来后，在hexo目录下，修改_config.yml的主题为你选择的注意名，我这里是yilia。里面还有一些可以自己设置的自己修改成你想要的。</p>
-<p>查看效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
-<h3 id="6、部署到gitHub"><a href="#6、部署到gitHub" class="headerlink" title="6、部署到gitHub"></a>6、部署到gitHub</h3><p>在hexo文件下，修改_config.yml，在最后的deploy处添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type: git</span><br><span class="line">repository: git@github.com:MorrisMeng/MorrisMeng.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p>仓库处添加你自己的创建的仓库地址，不要用HTTP的链接，用SSH的连接地址。</p>
-<p>保存后，执行如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save #保存配置</span><br><span class="line">hexo d  #上传配置到gitHub</span><br></pre></td></tr></table></figure></p>
-<p>若报错hexo ERROR Deployer not found: github，则</p>
-<p>先运行 npm install hexo-deployer-git –save </p>
-<p>人后就可以了，访问GitHub账户名.github.io试试看，我的是morrismeng.github.io。</p>
-<p>任何一次保存上传都执行如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<h3 id="7、写第一篇博客"><a href="#7、写第一篇博客" class="headerlink" title="7、写第一篇博客"></a>7、写第一篇博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;My New Post&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server //hexo s</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate //hexo g</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy //hexo d</span><br></pre></td></tr></table></figure>
-<p>也就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章title&quot; 	//创建名为“xx”的文章</span><br><span class="line">hexo g	               //生成静态文件</span><br><span class="line">hexo s	               //启动服务器</span><br><span class="line">npm install hexo-deployer-git --save //</span><br><span class="line">hexo d                 //部署网站</span><br></pre></td></tr></table></figure></p>
-<p>如果报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot read property &apos;utcOffset&apos; of null</span><br><span class="line">    at Object.exports.timezone (/Users/Dry/Documents/MorrisMeng/blog/MorrisMeng.github.io/hexo/node_modules/hexo/lib/plugins/processor/common.js:44:40</span><br></pre></td></tr></table></figure></p>
-<p>可能是获取时间的时候出问题了，吧timezone设置成Shanghai就可以了，也不知道什么原因。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>到这里一个简单的博客就基本搭建完成了，其实是在别人搭建好博客模板的基础上，利用GitHub GitPages来做了一个静态网页博客，用了别人的博客模板再此表示感谢。</p>
-<p>这仅仅是一个再简单不过的博客罢了，也没有评论功能，用的是免费的域名。有很多大神们自己买域名，自己写博客也是很厉害，表示很膜拜。</p>
-<p>最后，学习，无止境！大家共勉。</p>
-<p>参考文章：<br>1 <a href="http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">博客：HEXO搭建个人博客</a><br>2 <a href="https://www.jianshu.com/p/b7886271e21a" target="_blank" rel="noopener">简书：Hexo安装和配置</a></p>
+        <p>系统提供了函数计算三角函数，比如正弦sin()。</p>
+<p>抽象一个类，计算三角函数值。</p>
+<h2 id="Caculator-h"><a href="#Caculator-h" class="headerlink" title="Caculator.h"></a>Caculator.h</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">@interface Caculator : NSObject</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 传入角度计算余弦值</span><br><span class="line"></span><br><span class="line"> @param angle 角度值</span><br><span class="line"> @return 余弦值</span><br><span class="line"> */</span><br><span class="line">+ (double)sinWithAngle:(double)angle;</span><br><span class="line">/**</span><br><span class="line"> 传入象限角计算余弦值</span><br><span class="line"></span><br><span class="line"> @param quadrantAngle 象限角</span><br><span class="line"> @return 余弦值</span><br><span class="line"> */</span><br><span class="line">+ (double)sinWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ (double)cosWithAngle:(double)angle;</span><br><span class="line">+ (double)cosWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line">+ (double)tanWithAngle:(double)angle;</span><br><span class="line">+ (double)tanWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>一般我们传入一个角度或者直接传入象限角，就可以利用系统函数计算三角函数值。</p>
+<h2 id="Caculator-m"><a href="#Caculator-m" class="headerlink" title="Caculator.m"></a>Caculator.m</h2><p>如果传入的是角度我们需要将角度转化成象限角才能使用系统提供的计算三角函数的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//将角度转化成象限角的函数</span><br><span class="line">double quadrantAngle (double angle) &#123;</span><br><span class="line">    double a = (angle / 180 ) * M_PI;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然很简单，但是还是上传一下Caculator这个类<a href="https://github.com/MorrisMeng/TrigonometricFunction" target="_blank" rel="noopener">gitHub</a></p>
 
       
 
@@ -247,7 +212,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tool</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">三角函数</a>
         		</li>
       		
 		</ul>
@@ -303,7 +268,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://Morris.com/2018/01/25/利用GitHub-Pages搭建简单的博客/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://Morris.com/2018/03/18/OC实现三角函数的计算/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -317,18 +282,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/27/利用GitHub-Pages搭建的博客换电脑后怎么使用博客/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          利用GitHub Pages搭建的博客换电脑后怎么使用博客
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/25/Love-Voice/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">love voice</div>
+    <a href="/2018/03/16/用OC实现一个单链表/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用OC实现一个单链表</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -355,7 +311,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、git"><span class="toc-number">1.</span> <span class="toc-text">1、git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、安装Node"><span class="toc-number">2.</span> <span class="toc-text">2、安装Node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、安装npm"><span class="toc-number">3.</span> <span class="toc-text">3、安装npm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、Hexo安装与设置"><span class="toc-number">4.</span> <span class="toc-text">4、Hexo安装与设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、更改主题"><span class="toc-number">5.</span> <span class="toc-text">5、更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、部署到gitHub"><span class="toc-number">6.</span> <span class="toc-text">6、部署到gitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、写第一篇博客"><span class="toc-number">7.</span> <span class="toc-text">7、写第一篇博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number"></span> <span class="toc-text">最后</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Caculator-h"><span class="toc-number">1.</span> <span class="toc-text">Caculator.h</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caculator-m"><span class="toc-number">2.</span> <span class="toc-text">Caculator.m</span></a></li></ol>
                     </div>
                 </span>
             </div>
