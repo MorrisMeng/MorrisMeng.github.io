@@ -142,44 +142,42 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-利用GitHub-Pages搭建的博客换电脑后怎么使用博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-OC深拷贝和浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/27/利用GitHub-Pages搭建的博客换电脑后怎么使用博客/">利用GitHub Pages搭建的博客换电脑后怎么使用博客</a>
+      <a class="article-title" href="/2018/03/30/OC深拷贝和浅拷贝/">OC深拷贝和浅拷贝</a>
     </h1>
   
 
         
-        <a href="/2018/01/27/利用GitHub-Pages搭建的博客换电脑后怎么使用博客/" class="archive-article-date">
-  	<time datetime="2018-01-27T13:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-27</time>
+        <a href="/2018/03/30/OC深拷贝和浅拷贝/" class="archive-article-date">
+  	<time datetime="2018-03-30T04:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>利用Github Pages + hexo 搭建博客，需要在github上创建一个仓库，xxx.github.io。</p>
-<p>博客搭建好后在hexo配置文件中会生成一个public的文件夹。</p>
-<p>这个文件夹里的内容会被上传到xxx.github.io这个仓库里。</p>
-<p>也就是说，如果换电脑后将仓库克隆下来，你会发现，其实什么都没有，之前的配置什么的都没有。</p>
-<h2 id="换电脑后怎么继续维护自己的博客"><a href="#换电脑后怎么继续维护自己的博客" class="headerlink" title="换电脑后怎么继续维护自己的博客"></a>换电脑后怎么继续维护自己的博客</h2><blockquote>
-<p>大体思路是先将仓库克隆下来，然后删除里面所有文件，将原来仓库里的所有东西全部移进去。在本地机仓库配置相关环境，然后保存，上传。</p>
-</blockquote>
-<p>主要思路有如下三个步骤：</p>
-<h3 id="1、克隆仓库"><a href="#1、克隆仓库" class="headerlink" title="1、克隆仓库"></a>1、克隆仓库</h3><p>换一台新设备后，首先将博客仓库克隆至本地，然后删除里面所有文件。</p>
-<h3 id="2、xxx-github-io仓库"><a href="#2、xxx-github-io仓库" class="headerlink" title="2、xxx.github.io仓库"></a>2、xxx.github.io仓库</h3><p>将原来的配置好的电脑上的xxx.github.io中的所有文件都移至现在的仓库里。</p>
-<h3 id="3、配置环境"><a href="#3、配置环境" class="headerlink" title="3、配置环境"></a>3、配置环境</h3><p>因为克隆下来的仓库，本地并没有初始化hexo，所以不能用，所以需要在本地初始化一下hexo。</p>
-<p>如果没有安装相关环境的话还得再安装一下。</p>
-<p>初始化hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo</span><br></pre></td></tr></table></figure></p>
-<p>保存上传<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save #保存配置</span><br><span class="line">hexo d  #上传配置到gitHub</span><br></pre></td></tr></table></figure></p>
-<p>具体的怎么实现这三个步骤，各有不同，网上有人说创建两个分支的解决方案。也有专门创建另一个仓库用来存储博客里的配置等，每次换设备更新博客前先更新一下配置。看个人喜好，自己想办法吧。</p>
-<h2 id="换电脑后维护博客的注意事项"><a href="#换电脑后维护博客的注意事项" class="headerlink" title="换电脑后维护博客的注意事项"></a>换电脑后维护博客的注意事项</h2><p>1、每次更新博客前确保你的所有配置和文件都是最新的，不然的话保存上传了旧的文件配置等会覆盖之前的文件和配置。</p>
-<p>2、换电脑后直接执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<p>会将本地当前的博客状态,包括博文和配置上传到自己的博客。所以需要注意，别将旧的状态上传了。</p>
+        <h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><p><a href="http://www.cocoachina.com/ios/20141113/10213.html" target="_blank" rel="noopener">参考资料</a></p>
+<p>浅拷贝是对内存地址的复制。深拷贝是拷贝一份内存空间，系统再给该空间分配一个地址，新的地址和内存空间是独立的，不受之前内存空间和地址的影响。</p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>浅拷贝只是对内存地址的复制，让指针指向原来的内存空间，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char* str = (char*)malloc(100);</span><br><span class="line">char* str2 = str;</span><br></pre></td></tr></table></figure></p>
+<p>当内存销毁时，指向这片内存的几个指针需要重新定义才可以使用，要不然会成为野指针。</p>
+<p>在iOS里面，使用retain关键字进行引用计数，就是一种更加保险的浅拷贝。他既让几个指针共用同一片内存空间，又可以在release 由于计数的存在，不会轻易的销毁内存，达到更加简单使用的目的。</p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>深拷贝是指拷贝对象的具体内容，而内存地址是自主分配的，拷贝结束之后，两个对象虽然存的值是相同的，但是内存地址不一样，两个对象也互不影响，互不干涉。</p>
+<h2 id="对于拷贝操作"><a href="#对于拷贝操作" class="headerlink" title="对于拷贝操作"></a>对于拷贝操作</h2><p>[immutableObject copy]; //不可变的对象进行copy，浅拷贝<br>[immutableObject mutableCopy]; //深拷贝<br>[mutableObject copy]; //可变对象执行copy操作，深拷贝<br>[mutableObject mutableCopy]; //深拷贝</p>
+<h2 id="copy和mutableCopy"><a href="#copy和mutableCopy" class="headerlink" title="copy和mutableCopy"></a>copy和mutableCopy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = @”dddd&quot;;</span><br><span class="line">NSString *stringCopy = [string copy];</span><br><span class="line">NSMutableString *stringDCopy = [string mutableCopy];</span><br><span class="line">[stringMCopy appendString:@&quot;!!&quot;];</span><br></pre></td></tr></table></figure>
+<p>string和stringCopy指向的是同一块内存区域(weak reference),引用计数没有发生改变。<br>stringMCopy则是我们所说的真正意义上的复制，系统为其分配了新内存，是两个独立的字符串内容是一样的。<br>也就是说copy是浅拷贝，只是让新的指针指向了原来的内存空间。mutableCopy是拷贝了内存空间，系统给这块内存空间分配了新的指针。</p>
+<p>在iOS中并不是所有的对象都支持copy，mutableCopy，遵守NSCopying协议的类可以发送copy消息，遵守NSMutableCopying协议的类才可以发送mutableCopy消息。</p>
+<h2 id="copy和retain"><a href="#copy和retain" class="headerlink" title="copy和retain"></a>copy和retain</h2><p>copy 是创建一个新对象，retain 是创建一个指针，引用对象计数加一。 copy属性标识两个对象内容相同，新的对象retain count为1, 与旧有对象引用计数无关，旧有对象没有变化。copy减少对象对上下文的依赖。</p>
+<h2 id="已定义copy-mutableCopy"><a href="#已定义copy-mutableCopy" class="headerlink" title="已定义copy/mutableCopy"></a>已定义copy/mutableCopy</h2><p>如果想自定义一下copy那么就必须遵守NSCopying,并且实现 copyWithZone:方法</p>
+<p>如果想自定义一下mutableCopy 那么就必须遵守NSMutableCopying,并且实现mutableCopyWithZone:方法。</p>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@interface MyObj : NSObject&lt;NSCopying, NSMutableCopying&gt;&#123;</span><br><span class="line">    NSMutableString *_name;</span><br><span class="line">    NSString *_imutableStr ;</span><br><span class="line">    int _age;</span><br><span class="line">&#125;     </span><br><span class="line">@property (nonatomic, retain) NSMutableString *name;</span><br><span class="line">@property (nonatomic, retain) NSString *imutableStr;</span><br><span class="line">@property (nonatomic) int age;</span><br></pre></td></tr></table></figure></p>
+<p>copy拷贝构造<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (id)copyWithZone:(NSZone *)zone&#123;</span><br><span class="line">    MyObj *copy = [[[self class] allocWithZone :zone] init];</span><br><span class="line">    copy-&gt;name = [_name copy];</span><br><span class="line">    copy-&gt;imutableStr = [_imutableStr copy];</span><br><span class="line">    copy-&gt;age = age;</span><br><span class="line">    return copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>mutableCopy拷贝构造<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (id)mutableCopyWithZone:(NSZone *)zone&#123;</span><br><span class="line">    MyObj *copy = NSCopyObject(self, 0, zone);</span><br><span class="line">    copy-&gt;name = [_name mutableCopy];</span><br><span class="line">    copy-&gt;age = age;</span><br><span class="line">    return copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -193,7 +191,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tool</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基本语法</a>
         		</li>
       		
 		</ul>
@@ -203,7 +201,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/27/利用GitHub-Pages搭建的博客换电脑后怎么使用博客/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/30/OC深拷贝和浅拷贝/">展开全文 >></a>
         </p>
       
 
@@ -233,68 +231,46 @@
 
 
   
-    <article id="post-利用GitHub-Pages搭建简单的博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-OC向一个已经释放的对象发送消息会怎样" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/25/利用GitHub-Pages搭建简单的博客/">利用GitHub Pages搭建简单的博客</a>
+      <a class="article-title" href="/2018/03/27/OC向一个已经释放的对象发送消息会怎样/">OC向一个已经释放的对象发送消息会怎样</a>
     </h1>
   
 
         
-        <a href="/2018/01/25/利用GitHub-Pages搭建简单的博客/" class="archive-article-date">
-  	<time datetime="2018-01-25T07:54:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-25</time>
+        <a href="/2018/03/27/OC向一个已经释放的对象发送消息会怎样/" class="archive-article-date">
+  	<time datetime="2018-03-27T12:43:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>此文适合有点开发经验的小白或者电脑爱好者，知道markdown语法，知道gitHub的人群。</p>
-<p>利用<a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>，通过<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a>，使用GitHub上一些开源的<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">主题模板</a>，来搭建一个简单的个人博客。</p>
-<h3 id="1、git"><a href="#1、git" class="headerlink" title="1、git"></a>1、git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
-<p>如果电脑上没有安装homebrew，先安装brew，然后更新git。</p>
-<p>在GitHub上创建一个仓库，名字格式为：GitHub账户名.github.io，并将此仓库克隆到本地。</p>
-<h3 id="2、安装Node"><a href="#2、安装Node" class="headerlink" title="2、安装Node"></a>2、安装Node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
-<p>node是用来生成静态页面的。如果提示已经安装，则用brew upgrad更新即可。</p>
-<p>验证安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v #查看node版本</span><br></pre></td></tr></table></figure></p>
-<h3 id="3、安装npm"><a href="#3、安装npm" class="headerlink" title="3、安装npm"></a>3、安装npm</h3><p><a href="https://www.npmjs.com.cn" target="_blank" rel="noopener">关于npm</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v	#查看npm版本</span><br></pre></td></tr></table></figure>
-<p>如若没安装，先安装。</p>
-<h3 id="4、Hexo安装与设置"><a href="#4、Hexo安装与设置" class="headerlink" title="4、Hexo安装与设置"></a>4、Hexo安装与设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g  #-g表示全局安装,npm默认为当前项目安装</span><br><span class="line">hexo version  #查看hexo版本</span><br></pre></td></tr></table></figure>
-<p>如报错Cannot find module，使用以下语句安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo --no-optional</span><br></pre></td></tr></table></figure>
-<p>cd到本地的GitHub账户名.github.io文件夹下，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo  #卡在waiting的话ctl+c就行</span><br></pre></td></tr></table></figure></p>
-<p>在GitHub账户名.github.io文件夹下会生成一个hexo文件夹</p>
-<p>cd到hexo，进入到hexo目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">hexo generate</span><br><span class="line">hexo server		 #卡主的话ctl+c</span><br></pre></td></tr></table></figure>
-<h3 id="5、更改主题"><a href="#5、更改主题" class="headerlink" title="5、更改主题"></a>5、更改主题</h3><p>cd到hexo目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure></p>
-<p>将想要的主题直接克隆到了hexo/themes下。</p>
-<p>这里有很多<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">主题</a>提供选择。</p>
-<p>将主题克隆下来后，在hexo目录下，修改_config.yml的主题为你选择的注意名，我这里是yilia。里面还有一些可以自己设置的自己修改成你想要的。</p>
-<p>查看效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
-<h3 id="6、部署到gitHub"><a href="#6、部署到gitHub" class="headerlink" title="6、部署到gitHub"></a>6、部署到gitHub</h3><p>在hexo文件下，修改_config.yml，在最后的deploy处添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type: git</span><br><span class="line">repository: git@github.com:MorrisMeng/MorrisMeng.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p>仓库处添加你自己的创建的仓库地址，不要用HTTP的链接，用SSH的连接地址。</p>
-<p>保存后，执行如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save #保存配置</span><br><span class="line">hexo d  #上传配置到gitHub</span><br></pre></td></tr></table></figure></p>
-<p>若报错hexo ERROR Deployer not found: github，则</p>
-<p>先运行 npm install hexo-deployer-git –save </p>
-<p>人后就可以了，访问GitHub账户名.github.io试试看，我的是morrismeng.github.io。</p>
-<p>任何一次保存上传都执行如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<h3 id="7、写第一篇博客"><a href="#7、写第一篇博客" class="headerlink" title="7、写第一篇博客"></a>7、写第一篇博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;My New Post&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server //hexo s</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate //hexo g</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy //hexo d</span><br></pre></td></tr></table></figure>
-<p>也就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章title&quot; 	//创建名为“xx”的文章</span><br><span class="line">hexo g	               //生成静态文件</span><br><span class="line">hexo s	               //启动服务器</span><br><span class="line">npm install hexo-deployer-git --save //</span><br><span class="line">hexo d                 //部署网站</span><br></pre></td></tr></table></figure></p>
-<p>如果报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot read property &apos;utcOffset&apos; of null</span><br><span class="line">    at Object.exports.timezone (/Users/Dry/Documents/MorrisMeng/blog/MorrisMeng.github.io/hexo/node_modules/hexo/lib/plugins/processor/common.js:44:40</span><br></pre></td></tr></table></figure></p>
-<p>可能是获取时间的时候出问题了，吧timezone设置成Shanghai就可以了，也不知道什么原因。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>到这里一个简单的博客就基本搭建完成了，其实是在别人搭建好博客模板的基础上，利用GitHub GitPages来做了一个静态网页博客，用了别人的博客模板再此表示感谢。</p>
-<p>这仅仅是一个再简单不过的博客罢了，也没有评论功能，用的是免费的域名。有很多大神们自己买域名，自己写博客也是很厉害，表示很膜拜。</p>
-<p>最后，学习，无止境！大家共勉。</p>
-<p>参考文章：<br>1 <a href="http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">博客：HEXO搭建个人博客</a><br>2 <a href="https://www.jianshu.com/p/b7886271e21a" target="_blank" rel="noopener">简书：Hexo安装和配置</a></p>
+        <p><a href="http://www.cocoachina.com/ios/20160226/15324.html" target="_blank" rel="noopener">参考资料EXC_BAD_ACCESS</a></p>
+<p>关键字：MRC、ARC、EXC_BAD_INSTRUCTION、deallocated</p>
+<h2 id="一、提出问题"><a href="#一、提出问题" class="headerlink" title="一、提出问题"></a>一、提出问题</h2><p>在OC向一个已经释放的对象发送消息会出现什么情况呢？</p>
+<h2 id="二、作出假设"><a href="#二、作出假设" class="headerlink" title="二、作出假设"></a>二、作出假设</h2><p>向一个已经释放的对象发送消息，程序会闪退。</p>
+<h2 id="三、验证问题"><a href="#三、验证问题" class="headerlink" title="三、验证问题"></a>三、验证问题</h2><p>1、创建MRC工程</p>
+<p>为了方便验证，我们使用MRC来测试。</p>
+<p>创建一个工程，将环境切换到MRC，target的Build Settings下搜索，Objective-C Automatic Reference Counting，将Objective-C Automatic Reference Counting 设置为NO 。</p>
+<p>2、创建一个对象Person</p>
+<p>添加一个eat方法，方法里打印“吃饭”</p>
+<p>3、向释放掉的Person对象发送一个eat消息</p>
+<p>在ViewController里面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    Person *p = [[Person alloc] init];</span><br><span class="line">    [p eat];</span><br><span class="line">    [p release]; //调用release，释放p</span><br><span class="line">    [p eat]; //向已经释放掉的p对象，发送一个eat的消息</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>（1）运行此程序；</p>
+<p>（2）再在[p release]这行打断点，让程序执行到前一行，p未释放的时候，在lldb里面po p。</p>
+<p>4、结果</p>
+<p>（1）运行程序直接闪退到[p eat]这一行，闪退信息如下：</p>
+<p>[p eat]行报错信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread 1: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0)</span><br></pre></td></tr></table></figure></p>
+<p>lldb里面log<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-03-27 16:20:12.558905+0800 Runloop[2930:216258] *** -[Person eat]: message sent to deallocated instance 0x60000000b6d0</span><br></pre></td></tr></table></figure></p>
+<p>（2）断点调试，po p回车</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(lldb) po p</span><br><span class="line">2018-03-27 16:31:50.075191+0800 Runloop[3052:225294] *** -[Person respondsToSelector:]: message sent to deallocated instance 0x60000000b060</span><br><span class="line">0x000060000000b060</span><br><span class="line"></span><br><span class="line">(lldb)</span><br></pre></td></tr></table></figure>
+<h2 id="四、得出结论"><a href="#四、得出结论" class="headerlink" title="四、得出结论"></a>四、得出结论</h2><p>在OC中向一个被释放了的对象发送消息，程序直接闪退，并报有如下主要错误信息：EXC_BAD_INSTRUCTION、message sent to deallocated instance</p>
 
       
 
@@ -308,7 +284,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tool</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OC_错误_BAD_ACCESS</a>
         		</li>
       		
 		</ul>
@@ -318,7 +294,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/25/利用GitHub-Pages搭建简单的博客/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/27/OC向一个已经释放的对象发送消息会怎样/">展开全文 >></a>
         </p>
       
 
@@ -348,30 +324,33 @@
 
 
   
-    <article id="post-Love-Voice" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-OC实现三角函数的计算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/25/Love-Voice/">love voice</a>
+      <a class="article-title" href="/2018/03/18/OC实现三角函数的计算/">OC实现三角函数的计算</a>
     </h1>
   
 
         
-        <a href="/2018/01/25/Love-Voice/" class="archive-article-date">
-  	<time datetime="2018-01-25T06:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-25</time>
+        <a href="/2018/03/18/OC实现三角函数的计算/" class="archive-article-date">
+  	<time datetime="2018-03-18T07:00:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blogImg/hand.jpeg" alt="hand-w320"></p>
-<p>Morris: Hello Hongjuan , I love you so much ! Will you marry me?</p>
-<p>Hong: Yes i am .</p>
-<p>So ,let’s go to moon and take part in a wedding .</p>
+        <p>系统提供了函数计算三角函数，比如正弦sin()。</p>
+<p>抽象一个类，计算三角函数值。</p>
+<h2 id="Caculator-h"><a href="#Caculator-h" class="headerlink" title="Caculator.h"></a>Caculator.h</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">@interface Caculator : NSObject</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 传入角度计算余弦值</span><br><span class="line"></span><br><span class="line"> @param angle 角度值</span><br><span class="line"> @return 余弦值</span><br><span class="line"> */</span><br><span class="line">+ (double)sinWithAngle:(double)angle;</span><br><span class="line">/**</span><br><span class="line"> 传入象限角计算余弦值</span><br><span class="line"></span><br><span class="line"> @param quadrantAngle 象限角</span><br><span class="line"> @return 余弦值</span><br><span class="line"> */</span><br><span class="line">+ (double)sinWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ (double)cosWithAngle:(double)angle;</span><br><span class="line">+ (double)cosWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line">+ (double)tanWithAngle:(double)angle;</span><br><span class="line">+ (double)tanWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>一般我们传入一个角度或者直接传入象限角，就可以利用系统函数计算三角函数值。</p>
+<h2 id="Caculator-m"><a href="#Caculator-m" class="headerlink" title="Caculator.m"></a>Caculator.m</h2><p>如果传入的是角度我们需要将角度转化成象限角才能使用系统提供的计算三角函数的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//将角度转化成象限角的函数</span><br><span class="line">double quadrantAngle (double angle) &#123;</span><br><span class="line">    double a = (angle / 180 ) * M_PI;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然很简单，但是还是上传一下Caculator这个类<a href="https://github.com/MorrisMeng/TrigonometricFunction" target="_blank" rel="noopener">gitHub</a></p>
 
       
 
@@ -385,7 +364,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">love</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">三角函数</a>
         		</li>
       		
 		</ul>
@@ -395,7 +374,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/25/Love-Voice/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/18/OC实现三角函数的计算/">展开全文 >></a>
         </p>
       
 
@@ -427,7 +406,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
@@ -550,6 +529,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tableView</a>
               </li>
              
@@ -562,10 +545,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">App性能优化</a>
               </li>
              
@@ -575,6 +554,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
             
             <div class="clearfix"></div>

@@ -142,115 +142,50 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-UIView的frame、bounds、layer-position、layer-anchorPoint" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-OC-分类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/UIView的frame、bounds、layer-position、layer-anchorPoint/">UIView的frame、bounds、layer.position、layer.anchorPoint</a>
+      <a class="article-title" href="/2018/03/30/OC-分类/">OC-分类</a>
     </h1>
   
 
         
-        <a href="/2018/03/07/UIView的frame、bounds、layer-position、layer-anchorPoint/" class="archive-article-date">
-  	<time datetime="2018-03-07T12:36:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
+        <a href="/2018/03/30/OC-分类/" class="archive-article-date">
+  	<time datetime="2018-03-30T04:24:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://www.jcodecraeer.com/IOS/2015/0204/2413.html" target="_blank" rel="noopener">推荐文章</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基础知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/UIView的frame、bounds、layer-position、layer-anchorPoint/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tableView多种类型的cell处理办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/01/tableView多种类型的cell处理办法/">tableView多种类型的cell处理办法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/01/tableView多种类型的cell处理办法/" class="archive-article-date">
-  	<time datetime="2018-03-01T13:12:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一般思路"><a href="#一般思路" class="headerlink" title="一般思路"></a>一般思路</h2><p>判断不同的行返回各自不同的cell就行了，这种思路很容易理解，适用于简单的tableView。但是会导致返回cell的方法里各种判断。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    CellModel *model = self.dataSource[indexPath.row];</span><br><span class="line">    </span><br><span class="line">    //只有title</span><br><span class="line">    if (indexPath.row &lt; 4) &#123;</span><br><span class="line">        NSString *cellID = @&quot;ViewController_TitleCell&quot;;</span><br><span class="line">        TitleCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];</span><br><span class="line">        if (!cell) &#123;</span><br><span class="line">            cell = [[TitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];</span><br><span class="line">        &#125;</span><br><span class="line">        cell.titleLabel.text = model.title;</span><br><span class="line">        </span><br><span class="line">        return cell;</span><br><span class="line">    &#125;</span><br><span class="line">    //只有图标</span><br><span class="line">    else if (indexPath.row == 4 || indexPath.row == 5) &#123;</span><br><span class="line">        NSString *cellID = @&quot;ViewController_ImageCell&quot;;</span><br><span class="line">        ImageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];</span><br><span class="line">        if (!cell) &#123;</span><br><span class="line">            cell = [[ImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];</span><br><span class="line">        &#125;</span><br><span class="line">        cell.imgView.image = model.image;</span><br><span class="line"></span><br><span class="line">        return cell;</span><br><span class="line">    &#125;</span><br><span class="line">    //既有图标，又有title</span><br><span class="line">    else &#123;</span><br><span class="line">        NSString *cellID = @&quot;ViewController_TitleImageCell&quot;;</span><br><span class="line">        TitleImageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];</span><br><span class="line">        if (!cell) &#123;</span><br><span class="line">            cell = [[TitleImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];</span><br><span class="line">        &#125;</span><br><span class="line">        cell.titleLabel.text = model.title;</span><br><span class="line">        cell.imgView.image = model.image;</span><br><span class="line">        </span><br><span class="line">        return cell;</span><br><span class="line">    &#125;</span><br><span class="line">    return nil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="简化tableView的代理方法"><a href="#简化tableView的代理方法" class="headerlink" title="简化tableView的代理方法"></a>简化tableView的代理方法</h2><ul>
-<li><p>不同类型的cell继承BaseCell实现多态赋值</p>
+        <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>category</p>
+<p>当我们想给系统类添加成员方法、扩展属性的时候我们一般用到category。</p>
+<h2 id="一、分类和一般类比较"><a href="#一、分类和一般类比较" class="headerlink" title="一、分类和一般类比较"></a>一、分类和一般类比较</h2><p>1、类名</p>
+<p>一般类类名：类名，比如NSArray</p>
+<p>分类头文件：类名+(描述)，比如NSArray+Sort</p>
+<p>2、文件</p>
+<p>一般类头文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface 类名 ： 继承类</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>分类头文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface 类名 (描述)</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、分类的应用"><a href="#二、分类的应用" class="headerlink" title="二、分类的应用"></a>二、分类的应用</h2><h4 id="1、给类扩展属性"><a href="#1、给类扩展属性" class="headerlink" title="1、给类扩展属性"></a>1、给类扩展属性</h4><p>在分类里是不能添加成员变量的，但是可以添加属性，但是添加的属性，系统没有实现setter和getter方法。如果直接在分类里写一个属性，直接去调用的话会闪退，闪退内容是，找不到对应的方法实现，其实就是找不到对应的setter和getter方法。</p>
+<p>我们可以利用runtime动态给增加的属性生成setter和getter，比如给NSArray添加一个name属性：</p>
+<p>NSArray+Sort.h<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface NSArray (Sort)</span><br><span class="line"></span><br><span class="line">@property (nonatomic, copy) NSString *name;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>NSArray+Sort.m<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;NSArray+Sort.h&quot;</span><br><span class="line">#import &lt;objc/runtime.h&gt;</span><br><span class="line"></span><br><span class="line">static const char *key_name = &quot;key_name&quot;;</span><br><span class="line"></span><br><span class="line">@implementation NSArray (Sort)</span><br><span class="line"></span><br><span class="line">//利用runtime动态给属性生成set/get方法</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">    objc_setAssociatedObject(self, key_name, @&quot;name&quot;, OBJC_ASSOCIATION_COPY_NONATOMIC);</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">    return objc_getAssociatedObject(self, key_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>思考：如果自己手动去添加set和get方法会怎么样？</p>
+<p>尝试了一下，会报错，取不到名字为_name的属性，因为系统没有生成它。用self.name的话出现了循环调用方法的问题。</p>
+<h4 id="2、…"><a href="#2、…" class="headerlink" title="2、…"></a>2、…</h4><p>先来看下MJ框架里面对UIView写的分类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface UIView (MJExtension)</span><br><span class="line">@property (assign, nonatomic) CGFloat mj_x;</span><br><span class="line">@property (assign, nonatomic) CGFloat mj_y;</span><br><span class="line">...</span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>看一下其中一个属性mj_x的实现吧，在.m文件中:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)setMj_x:(CGFloat)mj_x</span><br><span class="line">&#123;</span><br><span class="line">    CGRect frame = self.frame;</span><br><span class="line">    frame.origin.x = mj_x;</span><br><span class="line">    self.frame = frame;</span><br><span class="line">&#125;</span><br><span class="line">- (CGFloat)mj_x</span><br><span class="line">&#123;</span><br><span class="line">    return self.frame.origin.x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>感觉像是将系统里面的某些属性用自己的属性名字来“代替”，比如用mj_x来代替self.frame.origin.x。</p>
+<h4 id="3、给类扩展方法"><a href="#3、给类扩展方法" class="headerlink" title="3、给类扩展方法"></a>3、给类扩展方法</h4><p>这个比较简单，就写一个方法，实现以下，达到某个目的就可以了。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li><p>分类不能添加成员变量，添加就报错</p>
 </li>
-<li><p>在处理model数据的时候就把cell的cellReusedId处理好</p>
-</li>
-<li><p>cell的类名作复用id</p>
-</li>
-<li><p>直接从数据源中取对应的cellReusedId，拿到对应类型的cell</p>
+<li><p>分类可以用@property添加属性，但是系统不会自动生成setter和getter</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    //1、取出数据源</span><br><span class="line">    Person *p = self.dataSource[indexPath.row];</span><br><span class="line">    //2、根据不同的复用标识取出对应的cell</span><br><span class="line">    BaseCell *cell = nil;</span><br><span class="line">    cell = [tableView dequeueReusableCellWithIdentifier:p.cellReusedId];</span><br><span class="line">    //3、给cell赋值</span><br><span class="line">    [cell setPerson:p];</span><br><span class="line">    </span><br><span class="line">    return cell;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p><a href="https://github.com/MorrisMeng/MultipleCells" target="_blank" rel="noopener">实现过程和代码示例</a></p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>只是一种思路而已，人是活的，代码是跳动的精灵，没有最好，只有更好！</p>
 
       
 
@@ -264,7 +199,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tableView</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基本语法</a>
         		</li>
       		
 		</ul>
@@ -274,7 +209,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/01/tableView多种类型的cell处理办法/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/30/OC-分类/">展开全文 >></a>
         </p>
       
 
@@ -304,61 +239,41 @@
 
 
   
-    <article id="post-单例类直接调用实例变量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/01/单例类直接调用实例变量/">类直接调用实例变量</a>
+      <a class="article-title" href="/2018/03/30/runtime/">runtime</a>
     </h1>
   
 
         
-        <a href="/2018/02/01/单例类直接调用实例变量/" class="archive-article-date">
-  	<time datetime="2018-02-01T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-01</time>
+        <a href="/2018/03/30/runtime/" class="archive-article-date">
+  	<time datetime="2018-03-30T04:22:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、问题："><a href="#一、问题：" class="headerlink" title="一、问题："></a>一、问题：</h2><p>1、只有调用类方法才可以返回单例吗？不是</p>
-<p>2、类可以直接调用属性变量吗？可以</p>
-<p>3、怎么让一个类直接调用一个属性变量？单例</p>
-<h2 id="二、关键词"><a href="#二、关键词" class="headerlink" title="二、关键词"></a>二、关键词</h2><p>class、属性变量、NSUserDefaults、@dynamic、单例</p>
-<h2 id="三、正文"><a href="#三、正文" class="headerlink" title="三、正文"></a>三、正文</h2><h3 id="1、NSUserDefaults举例"><a href="#1、NSUserDefaults举例" class="headerlink" title="1、NSUserDefaults举例"></a>1、NSUserDefaults举例</h3><blockquote>
-<p>我们知道类一般调用类方法，属性变量一般是通过对象调用的。属性变量可以用类直接调用吗？</p>
-</blockquote>
-<p>NSUserDefaults是一个单例，我们一般用[NSUserDefaults standardUserDefaults]这样获取这个单例。</p>
-<p>在NSUserDefaults的文档中并没有提供一个返回一个单例的类方法，而是有一个用class修饰的属性变量standardUserDefaults。</p>
-<p>当我们使用[NSUserDefaults standardUserDefaults]时，实质上是用NSUserDefaults这个类直接调用了属性变量standardUserDefaults，通过调用属性变量返回一个NSUserDefaults的实例。具体是怎么回事呢？请看<a href="">NSUserDefaults单例内部实现原理</a></p>
-<p>摘自文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*!</span><br><span class="line"> +standardUserDefaults returns a global instance of NSUserDefaults configured to search the current application&apos;s search list.</span><br><span class="line"> */</span><br><span class="line">@property (class, readonly, strong) NSUserDefaults *standardUserDefaults;</span><br></pre></td></tr></table></figure></p>
-<p>这里的class关键字：</p>
+        <h1 id="运行时"><a href="#运行时" class="headerlink" title="运行时"></a>运行时</h1><p>注明：非原创</p>
+<p>OC语言是动态语言，每个方法在运行的时候都被动态转成消息发送，即Objc_msgSend(receiver.class, selector);这是C语言函数。而runtime层objc_msgSend的源码是用汇编写的。</p>
+<p>objc_msgSend具体又是如何分发的呢？<a href="http://www.cocoachina.com/ios/20150818/13075.html" target="_blank" rel="noopener">原文</a></p>
+<p>1、判断receiver是否为nil，也就是objc_msgSend的第一个参数self，也就是要调用的那个方法所属对象</p>
+<p>2、从缓存里寻找，找到了则分发，否则</p>
+<p>3、利用objc-class.mm中_class_lookupMethodAndLoadCache3（为什么有个这么奇怪的方法。本文末尾会解释）方法去寻找selector</p>
 <ul>
-<li><p>class这个关键字在OC语言里比较少用，这里说的class不是大家常用的方法[类名 class]。</p>
-</li>
-<li><p>class也是一个用来修饰属性变量的关键字，如NSUserDefaults类里就用class修饰了standardUserDefaults这个属性变量：</p>
-</li>
-<li><p>class修饰符修饰属性变量，表示该属性变量是该类的一个变量，当然也是该类对象的属性变量。</p>
-</li>
+<li>如果支持GC，忽略掉非GC环境的方法（retain等）</li>
+<li>从本class的method list寻找selector，如果找到，填充到缓存中，并返回selector，否则</li>
+<li>寻找父类的method list，并依次往上寻找，直到找到selector，填充到缓存中，并返回selector，否则</li>
+<li>调用_class_resolveMethod，如果可以动态resolve为一个selector，不缓存，方法返回，否则<br>  转发这个selector，否则</li>
 </ul>
-<hr>
-<h3 id="2、怎么才能让一个类直接调用它的属性变量"><a href="#2、怎么才能让一个类直接调用它的属性变量" class="headerlink" title="2、怎么才能让一个类直接调用它的属性变量"></a>2、怎么才能让一个类直接调用它的属性变量</h3><blockquote>
-<p>我们知道一般的，类是没法直接调用它的实例变量的，但是什么情况下可以呢。</p>
-</blockquote>
-<p>当一个类的实例变量使用calss修饰符修饰的情况下，类就可以直接调用该属性变量。</p>
-<p>但是当你用class修饰符修饰一个属性变量时，系统会报警告提示你：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class property &apos;xxx属性变量名&apos; requires method &apos;xxx属性变量名&apos; to be defined - use @dynamic or provide a method implementation in this class implementation</span><br></pre></td></tr></table></figure>
-<p>提示在@implementation里面添加@dynamic修饰该属性变量，要么需要实现该属性变量名为名的类方法，在这个类方法里返回该属性变量。</p>
-<p>用在@implementation里使用@dynamic+属性变量，告诉编译器，不用给该数形变量生成set、get方法。在当前情况下如果用@dynamic修饰，那么你的实例变量不能提供给外界使用。</p>
-<p>如果不用@dynamic，而是实现方法，返回这个实例变量的话就和MMUserDefaults如出一辙了。</p>
-<p>MMUserDefaults源文件里面肯定是实现了以下方法的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+ (NSUserDefaults *)standardUserDefaults &#123;</span><br><span class="line">    return [NSUserDefaults sharedUserDefaults];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>方法里是不是这样写的不确定，但是肯定是返回了一个单例，也就是sharedUserDefaults在这个方法里面被返回了。所以当我们使用[NSUserDefaults standardUserDefaults]时候，就是调用的数形变量，类似于get到一个实例变量standardUserDefaults，而standardUserDefaults就作为一个单例每次被返回。</p>
-<h3 id="3、类直接调用属性变量一般使用场景"><a href="#3、类直接调用属性变量一般使用场景" class="headerlink" title="3、类直接调用属性变量一般使用场景"></a>3、类直接调用属性变量一般使用场景</h3><p>类直接调用属性变量这种不是很常见，但是是可以的。官方文档里都这样写，路子是不是有点野。当然这样写是有原因的，那就是NSUserDefaults是个单例，只有一个实例变量sharedUserDefaults，而且这个实例变量就是其本身。</p>
-<p>当然两个实例变量可以这样写吗，也是可以的，但是就不是很合理了，而且就麻烦了。单例的话这样写用一个词来形容：“恰到好处”，如果不是单例还这样写，就是“画蛇添足”了。</p>
-<h2 id="四、最后"><a href="#四、最后" class="headerlink" title="四、最后"></a>四、最后</h2><p>至此，我们对单例有了更深的认识，其实本篇文章的主要目的就是为了阐述单例的定义：一个类只有一个实例，而且这个实例对象就是该类本身。</p>
+<p>4、报错，抛出异常</p>
+<p>类在Runtime下的定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">struct objc_class &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line"></span><br><span class="line">#if !__OBJC2__</span><br><span class="line">    Class _Nullable super_class                              OBJC2_UNAVAILABLE;</span><br><span class="line">    const char * _Nonnull name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    long version                                             OBJC2_UNAVAILABLE;</span><br><span class="line">    long info                                                OBJC2_UNAVAILABLE;</span><br><span class="line">    long instance_size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">&#125; OBJC2_UNAVAILABLE;</span><br><span class="line">/* Use `Class` instead of `struct objc_class *` */</span><br></pre></td></tr></table></figure></p>
+<p>1、isa指针<br>2、父类<br>3、类名<br>4、类的版本信息<br>5、类信息<br>6、该类的实例变量大小<br>7、该类的成员变量链表<br>8、方法定义的链表<br>9、方法缓存，类的所有缓存都存在metaclass上。每个类都只有一份方法缓存，而不是每一个类的对象都保存一份<br>10、协议链表</p>
 
       
 
@@ -372,7 +287,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">OC-单例</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OC_运行时</a>
         		</li>
       		
 		</ul>
@@ -382,7 +297,112 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/01/单例类直接调用实例变量/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/30/runtime/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-atomic和nonatomic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/30/atomic和nonatomic/">atomic和nonatomic</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/30/atomic和nonatomic/" class="archive-article-date">
+  	<time datetime="2018-03-30T04:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="atomic和nonatomic"><a href="#atomic和nonatomic" class="headerlink" title="atomic和nonatomic"></a>atomic和nonatomic</h1><p><a href="https://stackoverflow.com/questions/588866/whats-the-difference-between-the-atomic-and-nonatomic-attributes" target="_blank" rel="noopener">参考stackOverflow</a></p>
+<h2 id="一、atomic"><a href="#一、atomic" class="headerlink" title="一、atomic"></a>一、atomic</h2><p>atomic 原子的，原子性，在申明属性的时候，如果不用nonatomic，则默认就是atomic。</p>
+<h4 id="1、什么是原子性"><a href="#1、什么是原子性" class="headerlink" title="1、什么是原子性"></a>1、什么是原子性</h4><p>原子性是指不同线程访问同一个数据的时候保证数据的完整性。</p>
+<p>在OC中属性的原子性是指，这个属性在被访问的时候，能够保证“顺序”访问，每次访问都能保证该属性值的完整性。</p>
+<p>对属性的读和写是原子性的。</p>
+<h4 id="2、原子性的作用"><a href="#2、原子性的作用" class="headerlink" title="2、原子性的作用"></a>2、原子性的作用</h4><p>作用就是保证数据的完整性。</p>
+<p>举个例子来说，假设有一个属性name = @”x”，有A、B和C三个线程同时随机的访问name属性，A：[self setName:@”A”]，B:[self setName:@”B”]，C[self name]。</p>
+<p>A和B同时给name赋值，同时C在获取name的值，这个时候如果name属性是atomic，即原子性的，这时候当一个线程访问name的时候，另外的线程都是”等“状态，等本次访问结束后再进行下次访问。如果name是nonatomic非原子性的，这时候三个线程访问name是随机的，有可能在A给name赋值的时候，C同时也在取name的值，而B也在给name赋值，出现这种不可预期的情况。</p>
+<p>对于atomic的属性，系统生成的 getter/setter 会保证 get、set 操作的完整性，不受其他线程影响。比如，线程 A 的 getter 方法运行到一半，线程 B 调用了 setter：那么线程 A 的 getter 还是能得到一个完好无损的对象。</p>
+<h4 id="3、原子性一定是线程安全的吗"><a href="#3、原子性一定是线程安全的吗" class="headerlink" title="3、原子性一定是线程安全的吗"></a>3、原子性一定是线程安全的吗</h4><p>原子性不一定就能保证线程安全。</p>
+<p>比如，当A访问name的时候，将name这个属性给提前释放掉了，这时候，B和C访问的时候就会造成程序闪退。</p>
+<p>nonatomic的内存管理语义是非原子性的，非原子性的操作本来就是线程不安全的，而atomic的操作是原子性的，但是并不意味着它是线程安全的，它会增加正确的几率，能够更好的避免线程的错误，但是它仍然是线程不安全的。</p>
+<p>当A线程的写操作结束后，B线程进行写操作，然后当A线程需要读操作时，却获得了在B线程中的值，这就破坏了线程安全，如果有线程C在A线程读操作前 release了该属性，那么还会导致程序崩溃。所以仅仅使用atomic并不会使得线程安全，我们还要为线程添加lock来确保线程的安全。</p>
+<h2 id="二、nonatomic"><a href="#二、nonatomic" class="headerlink" title="二、nonatomic"></a>二、nonatomic</h2><p>非原子性的，在OC中一般都会使用nonatomic，非原子性的。</p>
+<p>为什么OC一般情况下都用nonatomic？</p>
+<p>用nonatomic执行效率更高，不用等到一个线程访问完属性值后另一个线程再去执行；访问nonatomic的属性时，不用经过线程安全的判断，直接访问，速度更快。</p>
+<h2 id="三、atomic和nonatomic比较"><a href="#三、atomic和nonatomic比较" class="headerlink" title="三、atomic和nonatomic比较"></a>三、atomic和nonatomic比较</h2><p>atomic</p>
+<pre><code>•    是默认的
+•    会保证 CPU 能在别的线程来访问这个属性之前，先执行完当前流程
+•    速度不快，因为要保证操作整体完成
+</code></pre><p>nonatomic</p>
+<pre><code>•    不是默认的
+•    更快
+•    线程不安全
+•    如有两个线程访问同一个属性，会出现无法预料的结果
+</code></pre><p>atomic和nonatomic的本质区别在于他们生成的属性setter和getter方法上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//atomic</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">    @synchronized (self); &#123;</span><br><span class="line">        if (_name != name) &#123;</span><br><span class="line">            [_name release];</span><br><span class="line">            _name = [name retain];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">    @synchronized (self) &#123;</span><br><span class="line">        return _name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//nonatomic</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">   if (_name != name) &#123;</span><br><span class="line">       [_name release];</span><br><span class="line">       _name = [name retain];</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">	return _name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>atomic使用了线程同步锁。</p>
+<p>nonatomic未使用线程同步锁，使用的是自旋锁。<br>当一个线程获得锁在给属性赋值时，其他线程将会一直循环在那里查看是否该锁被释放，被释放后继续访问该属性。<br>在锁的持有者保持的时间较短的情况下，使用自旋锁，属性赋值即满足这样的条件。</p>
+<p><a href="https://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">但是自旋锁是不安全的</a></p>
+<p><a href="http://www.cocoachina.com/ios/20161129/18216.html" target="_blank" rel="noopener">关于自旋锁</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基本语法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/30/atomic和nonatomic/">展开全文 >></a>
         </p>
       
 
@@ -414,7 +434,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
   
 
@@ -537,6 +557,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tableView</a>
               </li>
              
@@ -549,10 +573,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">App性能优化</a>
               </li>
              
@@ -562,6 +582,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
             
             <div class="clearfix"></div>
