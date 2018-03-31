@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Morris Meng">
 <meta property="og:description" content="响应者链参考一 参考二 一、基础知识事件的分类1、触摸事件； 2、运动事件； 3、远程控制事件。 UIResponder在iOS中，能够响应事件的对象都是直接或者间接的继承UIResponder。 UIResponder提供了四个用户点击的回调方法，分别对应用户点击开始、移动、点击结束以及取消点击。其中只有在程序强制退出或者来电时，取消点击事件才会调用。 12345678-(void)touche">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-31T09:29:04.000Z">
+<meta property="og:updated_time" content="2018-03-31T09:31:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应者链">
 <meta name="twitter:description" content="响应者链参考一 参考二 一、基础知识事件的分类1、触摸事件； 2、运动事件； 3、远程控制事件。 UIResponder在iOS中，能够响应事件的对象都是直接或者间接的继承UIResponder。 UIResponder提供了四个用户点击的回调方法，分别对应用户点击开始、移动、点击结束以及取消点击。其中只有在程序强制退出或者来电时，取消点击事件才会调用。 12345678-(void)touche">
@@ -169,6 +169,7 @@
 <h4 id="UIResponder"><a href="#UIResponder" class="headerlink" title="UIResponder"></a>UIResponder</h4><p>在iOS中，能够响应事件的对象都是直接或者间接的继承UIResponder。</p>
 <p>UIResponder提供了四个用户点击的回调方法，分别对应用户点击开始、移动、点击结束以及取消点击。<br>其中只有在程序强制退出或者来电时，取消点击事件才会调用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &#123;        </span><br><span class="line">&#125; </span><br><span class="line">-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event &#123;       </span><br><span class="line">&#125; </span><br><span class="line">-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event &#123;       </span><br><span class="line">&#125; </span><br><span class="line">-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event &#123;      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参数UITouch</p>
 
       
 
