@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="Morris Meng">
 <meta property="og:description" content="响应者链参考一 参考二 一、基础知识事件的分类1、触摸事件； 2、运动事件； 3、远程控制事件。 UIResponder在iOS中，能够响应事件的对象都是直接或者间接的继承UIResponder。 UIResponder提供了四个用户点击的回调方法，分别对应用户点击开始、移动、点击结束以及取消点击。其中只有在程序强制退出或者来电时，取消点击事件才会调用。 12345678-(void)touche">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-31T09:31:27.000Z">
+<meta property="og:image" content="http://morris.com/assets/blogImg/响应者链示例图.jpg">
+<meta property="og:updated_time" content="2018-03-31T09:38:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应者链">
 <meta name="twitter:description" content="响应者链参考一 参考二 一、基础知识事件的分类1、触摸事件； 2、运动事件； 3、远程控制事件。 UIResponder在iOS中，能够响应事件的对象都是直接或者间接的继承UIResponder。 UIResponder提供了四个用户点击的回调方法，分别对应用户点击开始、移动、点击结束以及取消点击。其中只有在程序强制退出或者来电时，取消点击事件才会调用。 12345678-(void)touche">
+<meta name="twitter:image" content="http://morris.com/assets/blogImg/响应者链示例图.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Morris Meng" type="application/atom+xml">
   
@@ -169,10 +171,32 @@
 <h4 id="UIResponder"><a href="#UIResponder" class="headerlink" title="UIResponder"></a>UIResponder</h4><p>在iOS中，能够响应事件的对象都是直接或者间接的继承UIResponder。</p>
 <p>UIResponder提供了四个用户点击的回调方法，分别对应用户点击开始、移动、点击结束以及取消点击。<br>其中只有在程序强制退出或者来电时，取消点击事件才会调用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &#123;        </span><br><span class="line">&#125; </span><br><span class="line">-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event &#123;       </span><br><span class="line">&#125; </span><br><span class="line">-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event &#123;       </span><br><span class="line">&#125; </span><br><span class="line">-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event &#123;      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参数UITouch</p>
+<ul>
+<li>参数UITouch</li>
+</ul>
 <p>表示单个点击；</p>
-<p>其类文件中存在枚举类型UITouchPhase的属性，用来表示当前点击的状态。这些状态包括点击开始、移动、停止、结束、取消五个状态；</p>
-<p>每次点击发生的时候，点击对象都放在一个集合中传入UIResponder的回调方法中，我们通过集合中对象获取用户点击的位置；</p>
+<p>其类文件中存在枚举类型UITouchPhase的属性，用来表示当前点击的状态。这些状态包括点击开始、移动、停止、结束、取消五个状态。</p>
+<p>每次点击发生的时候，点击对象都放在一个集合中传入UIResponder的回调方法中，我们通过集合中对象获取用户点击的位置。</p>
+<p>通过</p>
+<ul>
+<li>(CGPoint)locationInView:(nullable UIView *)view  //获取当前点击坐标点；</li>
+<li>(CGPoint)previousLocationInView:(nullable UIView *)view //获取上个点击位置的坐标点</li>
+</ul>
+<ul>
+<li>参数UIEvent</li>
+</ul>
+<p>用户交互的事件对象，事件有事件类型，UIEventType；</p>
+<h2 id="二、事件传递"><a href="#二、事件传递" class="headerlink" title="二、事件传递"></a>二、事件传递</h2><p>当用户点击某一个视图或者按钮时候会首先响应application中的UIWindow，然后一层层的向下找，直到找到用户点击的视图为止，主要是通过以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event; </span><br><span class="line">- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event;</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/blogImg/响应者链示例图.jpg" alt="hand-w320"></p>
+<p>在上图中用户点击视图中的ViewD时，UIWindow首先接收到响应，此响应包括用户点击的区域和一个封装好的UIEvent对象，然后UIWindow通过这些信息利用以下方法查找：</p>
+<p>1、UIWindow会通过调用pointInside:withEvent:方法返回的YES得知用户点击的范围在ViewA中；</p>
+<p>2、ViewA调用hitTest:withEvent:方法，在方法中遍历所有的subView(ViewB、ViewC)调用hitTest:withEvent:方法；</p>
+<p>3、在遍历中发现使用ViewC调用pointInside:withEvent:方法时返回YES，得知用户点击在ViewC范围之内；</p>
+<p>4、ViewC调用hitTest:withEvent:方法，在方法中遍历所有的subView(ViewD、ViewE)调用hitTest:withEvent:方法;</p>
+<p>5、在遍历中发现使用ViewD调用pointInside:withEvent:方法时返回YES，得知用户点击在ViewD范围之内;</p>
+<p>6、在ViewD调用hitTest:withEvent:方法之前发现View的subViews的count为0，故确定用户点击在ViewD之上。</p>
+<p>UIWindow会用遍历subviews，使用每一个subview调用hitTest:withEvent:方法，如果用户点击在某一个subview上，pointInside:withEvent:方法返回YES，再用这个subview调用hitTest:withEvent:方法，依次类推，直到当前view没有子view或点击的位置没有在其任何子view之上，便确定用户点击在某view上</p>
 
       
 
@@ -316,7 +340,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#响应者链"><span class="toc-number">1.</span> <span class="toc-text">响应者链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基础知识"><span class="toc-number">1.1.</span> <span class="toc-text">一、基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#事件的分类"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">事件的分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UIResponder"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">UIResponder</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#响应者链"><span class="toc-number">1.</span> <span class="toc-text">响应者链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基础知识"><span class="toc-number">1.1.</span> <span class="toc-text">一、基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#事件的分类"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">事件的分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UIResponder"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">UIResponder</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、事件传递"><span class="toc-number">1.2.</span> <span class="toc-text">二、事件传递</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -460,11 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
+                <a href="javascript:void(0)" class="js-tag color5">tableView</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tableView</a>
+                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,11 +500,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">App性能优化</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">App性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
