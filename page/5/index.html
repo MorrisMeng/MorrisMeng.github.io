@@ -142,44 +142,50 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-利用GitHub-Pages搭建的博客换电脑后怎么使用博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-OC-分类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/27/利用GitHub-Pages搭建的博客换电脑后怎么使用博客/">利用GitHub Pages搭建的博客换电脑后怎么使用博客</a>
+      <a class="article-title" href="/2018/03/30/OC-分类/">OC-分类</a>
     </h1>
   
 
         
-        <a href="/2018/01/27/利用GitHub-Pages搭建的博客换电脑后怎么使用博客/" class="archive-article-date">
-  	<time datetime="2018-01-27T13:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-27</time>
+        <a href="/2018/03/30/OC-分类/" class="archive-article-date">
+  	<time datetime="2018-03-30T04:24:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>利用Github Pages + hexo 搭建博客，需要在github上创建一个仓库，xxx.github.io。</p>
-<p>博客搭建好后在hexo配置文件中会生成一个public的文件夹。</p>
-<p>这个文件夹里的内容会被上传到xxx.github.io这个仓库里。</p>
-<p>也就是说，如果换电脑后将仓库克隆下来，你会发现，其实什么都没有，之前的配置什么的都没有。</p>
-<h2 id="换电脑后怎么继续维护自己的博客"><a href="#换电脑后怎么继续维护自己的博客" class="headerlink" title="换电脑后怎么继续维护自己的博客"></a>换电脑后怎么继续维护自己的博客</h2><blockquote>
-<p>大体思路是先将仓库克隆下来，然后删除里面所有文件，将原来仓库里的所有东西全部移进去。在本地机仓库配置相关环境，然后保存，上传。</p>
-</blockquote>
-<p>主要思路有如下三个步骤：</p>
-<h3 id="1、克隆仓库"><a href="#1、克隆仓库" class="headerlink" title="1、克隆仓库"></a>1、克隆仓库</h3><p>换一台新设备后，首先将博客仓库克隆至本地，然后删除里面所有文件。</p>
-<h3 id="2、xxx-github-io仓库"><a href="#2、xxx-github-io仓库" class="headerlink" title="2、xxx.github.io仓库"></a>2、xxx.github.io仓库</h3><p>将原来的配置好的电脑上的xxx.github.io中的所有文件都移至现在的仓库里。</p>
-<h3 id="3、配置环境"><a href="#3、配置环境" class="headerlink" title="3、配置环境"></a>3、配置环境</h3><p>因为克隆下来的仓库，本地并没有初始化hexo，所以不能用，所以需要在本地初始化一下hexo。</p>
-<p>如果没有安装相关环境的话还得再安装一下。</p>
-<p>初始化hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo</span><br></pre></td></tr></table></figure></p>
-<p>保存上传<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save #保存配置</span><br><span class="line">hexo d  #上传配置到gitHub</span><br></pre></td></tr></table></figure></p>
-<p>具体的怎么实现这三个步骤，各有不同，网上有人说创建两个分支的解决方案。也有专门创建另一个仓库用来存储博客里的配置等，每次换设备更新博客前先更新一下配置。看个人喜好，自己想办法吧。</p>
-<h2 id="换电脑后维护博客的注意事项"><a href="#换电脑后维护博客的注意事项" class="headerlink" title="换电脑后维护博客的注意事项"></a>换电脑后维护博客的注意事项</h2><p>1、每次更新博客前确保你的所有配置和文件都是最新的，不然的话保存上传了旧的文件配置等会覆盖之前的文件和配置。</p>
-<p>2、换电脑后直接执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<p>会将本地当前的博客状态,包括博文和配置上传到自己的博客。所以需要注意，别将旧的状态上传了。</p>
+        <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>category</p>
+<p>当我们想给系统类添加成员方法、扩展属性的时候我们一般用到category。</p>
+<h2 id="一、分类和一般类比较"><a href="#一、分类和一般类比较" class="headerlink" title="一、分类和一般类比较"></a>一、分类和一般类比较</h2><p>1、类名</p>
+<p>一般类类名：类名，比如NSArray</p>
+<p>分类头文件：类名+(描述)，比如NSArray+Sort</p>
+<p>2、文件</p>
+<p>一般类头文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface 类名 ： 继承类</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>分类头文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface 类名 (描述)</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、分类的应用"><a href="#二、分类的应用" class="headerlink" title="二、分类的应用"></a>二、分类的应用</h2><h4 id="1、给类扩展属性"><a href="#1、给类扩展属性" class="headerlink" title="1、给类扩展属性"></a>1、给类扩展属性</h4><p>在分类里是不能添加成员变量的，但是可以添加属性，但是添加的属性，系统没有实现setter和getter方法。如果直接在分类里写一个属性，直接去调用的话会闪退，闪退内容是，找不到对应的方法实现，其实就是找不到对应的setter和getter方法。</p>
+<p>我们可以利用runtime动态给增加的属性生成setter和getter，比如给NSArray添加一个name属性：</p>
+<p>NSArray+Sort.h<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface NSArray (Sort)</span><br><span class="line"></span><br><span class="line">@property (nonatomic, copy) NSString *name;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>NSArray+Sort.m<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;NSArray+Sort.h&quot;</span><br><span class="line">#import &lt;objc/runtime.h&gt;</span><br><span class="line"></span><br><span class="line">static const char *key_name = &quot;key_name&quot;;</span><br><span class="line"></span><br><span class="line">@implementation NSArray (Sort)</span><br><span class="line"></span><br><span class="line">//利用runtime动态给属性生成set/get方法</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">    objc_setAssociatedObject(self, key_name, @&quot;name&quot;, OBJC_ASSOCIATION_COPY_NONATOMIC);</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">    return objc_getAssociatedObject(self, key_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>思考：如果自己手动去添加set和get方法会怎么样？</p>
+<p>尝试了一下，会报错，取不到名字为_name的属性，因为系统没有生成它。用self.name的话出现了循环调用方法的问题。</p>
+<h4 id="2、…"><a href="#2、…" class="headerlink" title="2、…"></a>2、…</h4><p>先来看下MJ框架里面对UIView写的分类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface UIView (MJExtension)</span><br><span class="line">@property (assign, nonatomic) CGFloat mj_x;</span><br><span class="line">@property (assign, nonatomic) CGFloat mj_y;</span><br><span class="line">...</span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>看一下其中一个属性mj_x的实现吧，在.m文件中:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)setMj_x:(CGFloat)mj_x</span><br><span class="line">&#123;</span><br><span class="line">    CGRect frame = self.frame;</span><br><span class="line">    frame.origin.x = mj_x;</span><br><span class="line">    self.frame = frame;</span><br><span class="line">&#125;</span><br><span class="line">- (CGFloat)mj_x</span><br><span class="line">&#123;</span><br><span class="line">    return self.frame.origin.x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>感觉像是将系统里面的某些属性用自己的属性名字来“代替”，比如用mj_x来代替self.frame.origin.x。</p>
+<h4 id="3、给类扩展方法"><a href="#3、给类扩展方法" class="headerlink" title="3、给类扩展方法"></a>3、给类扩展方法</h4><p>这个比较简单，就写一个方法，实现以下，达到某个目的就可以了。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li><p>分类不能添加成员变量，添加就报错</p>
+</li>
+<li><p>分类可以用@property添加属性，但是系统不会自动生成setter和getter</p>
+</li>
+</ul>
 
       
 
@@ -193,7 +199,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tool</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基本语法</a>
         		</li>
       		
 		</ul>
@@ -203,7 +209,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/27/利用GitHub-Pages搭建的博客换电脑后怎么使用博客/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/30/OC-分类/">展开全文 >></a>
         </p>
       
 
@@ -233,68 +239,58 @@
 
 
   
-    <article id="post-利用GitHub-Pages搭建简单的博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-atomic和nonatomic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/25/利用GitHub-Pages搭建简单的博客/">利用GitHub Pages搭建简单的博客</a>
+      <a class="article-title" href="/2018/03/30/atomic和nonatomic/">atomic和nonatomic</a>
     </h1>
   
 
         
-        <a href="/2018/01/25/利用GitHub-Pages搭建简单的博客/" class="archive-article-date">
-  	<time datetime="2018-01-25T07:54:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-25</time>
+        <a href="/2018/03/30/atomic和nonatomic/" class="archive-article-date">
+  	<time datetime="2018-03-30T04:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>此文适合有点开发经验的小白或者电脑爱好者，知道markdown语法，知道gitHub的人群。</p>
-<p>利用<a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>，通过<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a>，使用GitHub上一些开源的<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">主题模板</a>，来搭建一个简单的个人博客。</p>
-<h3 id="1、git"><a href="#1、git" class="headerlink" title="1、git"></a>1、git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
-<p>如果电脑上没有安装homebrew，先安装brew，然后更新git。</p>
-<p>在GitHub上创建一个仓库，名字格式为：GitHub账户名.github.io，并将此仓库克隆到本地。</p>
-<h3 id="2、安装Node"><a href="#2、安装Node" class="headerlink" title="2、安装Node"></a>2、安装Node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
-<p>node是用来生成静态页面的。如果提示已经安装，则用brew upgrad更新即可。</p>
-<p>验证安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v #查看node版本</span><br></pre></td></tr></table></figure></p>
-<h3 id="3、安装npm"><a href="#3、安装npm" class="headerlink" title="3、安装npm"></a>3、安装npm</h3><p><a href="https://www.npmjs.com.cn" target="_blank" rel="noopener">关于npm</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v	#查看npm版本</span><br></pre></td></tr></table></figure>
-<p>如若没安装，先安装。</p>
-<h3 id="4、Hexo安装与设置"><a href="#4、Hexo安装与设置" class="headerlink" title="4、Hexo安装与设置"></a>4、Hexo安装与设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g  #-g表示全局安装,npm默认为当前项目安装</span><br><span class="line">hexo version  #查看hexo版本</span><br></pre></td></tr></table></figure>
-<p>如报错Cannot find module，使用以下语句安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo --no-optional</span><br></pre></td></tr></table></figure>
-<p>cd到本地的GitHub账户名.github.io文件夹下，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo  #卡在waiting的话ctl+c就行</span><br></pre></td></tr></table></figure></p>
-<p>在GitHub账户名.github.io文件夹下会生成一个hexo文件夹</p>
-<p>cd到hexo，进入到hexo目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">hexo generate</span><br><span class="line">hexo server		 #卡主的话ctl+c</span><br></pre></td></tr></table></figure>
-<h3 id="5、更改主题"><a href="#5、更改主题" class="headerlink" title="5、更改主题"></a>5、更改主题</h3><p>cd到hexo目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure></p>
-<p>将想要的主题直接克隆到了hexo/themes下。</p>
-<p>这里有很多<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">主题</a>提供选择。</p>
-<p>将主题克隆下来后，在hexo目录下，修改_config.yml的主题为你选择的注意名，我这里是yilia。里面还有一些可以自己设置的自己修改成你想要的。</p>
-<p>查看效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
-<h3 id="6、部署到gitHub"><a href="#6、部署到gitHub" class="headerlink" title="6、部署到gitHub"></a>6、部署到gitHub</h3><p>在hexo文件下，修改_config.yml，在最后的deploy处添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type: git</span><br><span class="line">repository: git@github.com:MorrisMeng/MorrisMeng.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p>仓库处添加你自己的创建的仓库地址，不要用HTTP的链接，用SSH的连接地址。</p>
-<p>保存后，执行如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save #保存配置</span><br><span class="line">hexo d  #上传配置到gitHub</span><br></pre></td></tr></table></figure></p>
-<p>若报错hexo ERROR Deployer not found: github，则</p>
-<p>先运行 npm install hexo-deployer-git –save </p>
-<p>人后就可以了，访问GitHub账户名.github.io试试看，我的是morrismeng.github.io。</p>
-<p>任何一次保存上传都执行如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<h3 id="7、写第一篇博客"><a href="#7、写第一篇博客" class="headerlink" title="7、写第一篇博客"></a>7、写第一篇博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;My New Post&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server //hexo s</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate //hexo g</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy //hexo d</span><br></pre></td></tr></table></figure>
-<p>也就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章title&quot; 	//创建名为“xx”的文章</span><br><span class="line">hexo g	               //生成静态文件</span><br><span class="line">hexo s	               //启动服务器</span><br><span class="line">npm install hexo-deployer-git --save //</span><br><span class="line">hexo d                 //部署网站</span><br></pre></td></tr></table></figure></p>
-<p>如果报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot read property &apos;utcOffset&apos; of null</span><br><span class="line">    at Object.exports.timezone (/Users/Dry/Documents/MorrisMeng/blog/MorrisMeng.github.io/hexo/node_modules/hexo/lib/plugins/processor/common.js:44:40</span><br></pre></td></tr></table></figure></p>
-<p>可能是获取时间的时候出问题了，吧timezone设置成Shanghai就可以了，也不知道什么原因。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>到这里一个简单的博客就基本搭建完成了，其实是在别人搭建好博客模板的基础上，利用GitHub GitPages来做了一个静态网页博客，用了别人的博客模板再此表示感谢。</p>
-<p>这仅仅是一个再简单不过的博客罢了，也没有评论功能，用的是免费的域名。有很多大神们自己买域名，自己写博客也是很厉害，表示很膜拜。</p>
-<p>最后，学习，无止境！大家共勉。</p>
-<p>参考文章：<br>1 <a href="http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">博客：HEXO搭建个人博客</a><br>2 <a href="https://www.jianshu.com/p/b7886271e21a" target="_blank" rel="noopener">简书：Hexo安装和配置</a></p>
+        <h1 id="atomic和nonatomic"><a href="#atomic和nonatomic" class="headerlink" title="atomic和nonatomic"></a>atomic和nonatomic</h1><p><a href="https://stackoverflow.com/questions/588866/whats-the-difference-between-the-atomic-and-nonatomic-attributes" target="_blank" rel="noopener">参考stackOverflow</a></p>
+<h2 id="一、atomic"><a href="#一、atomic" class="headerlink" title="一、atomic"></a>一、atomic</h2><p>atomic 原子的，原子性，在申明属性的时候，如果不用nonatomic，则默认就是atomic。</p>
+<h4 id="1、什么是原子性"><a href="#1、什么是原子性" class="headerlink" title="1、什么是原子性"></a>1、什么是原子性</h4><p>原子性是指不同线程访问同一个数据的时候保证数据的完整性。</p>
+<p>在OC中属性的原子性是指，这个属性在被访问的时候，能够保证“顺序”访问，每次访问都能保证该属性值的完整性。</p>
+<p>对属性的读和写是原子性的。</p>
+<h4 id="2、原子性的作用"><a href="#2、原子性的作用" class="headerlink" title="2、原子性的作用"></a>2、原子性的作用</h4><p>作用就是保证数据的完整性。</p>
+<p>举个例子来说，假设有一个属性name = @”x”，有A、B和C三个线程同时随机的访问name属性，A：[self setName:@”A”]，B:[self setName:@”B”]，C[self name]。</p>
+<p>A和B同时给name赋值，同时C在获取name的值，这个时候如果name属性是atomic，即原子性的，这时候当一个线程访问name的时候，另外的线程都是”等“状态，等本次访问结束后再进行下次访问。如果name是nonatomic非原子性的，这时候三个线程访问name是随机的，有可能在A给name赋值的时候，C同时也在取name的值，而B也在给name赋值，出现这种不可预期的情况。</p>
+<p>对于atomic的属性，系统生成的 getter/setter 会保证 get、set 操作的完整性，不受其他线程影响。比如，线程 A 的 getter 方法运行到一半，线程 B 调用了 setter：那么线程 A 的 getter 还是能得到一个完好无损的对象。</p>
+<h4 id="3、原子性一定是线程安全的吗"><a href="#3、原子性一定是线程安全的吗" class="headerlink" title="3、原子性一定是线程安全的吗"></a>3、原子性一定是线程安全的吗</h4><p>原子性不一定就能保证线程安全。</p>
+<p>比如，当A访问name的时候，将name这个属性给提前释放掉了，这时候，B和C访问的时候就会造成程序闪退。</p>
+<p>nonatomic的内存管理语义是非原子性的，非原子性的操作本来就是线程不安全的，而atomic的操作是原子性的，但是并不意味着它是线程安全的，它会增加正确的几率，能够更好的避免线程的错误，但是它仍然是线程不安全的。</p>
+<p>当A线程的写操作结束后，B线程进行写操作，然后当A线程需要读操作时，却获得了在B线程中的值，这就破坏了线程安全，如果有线程C在A线程读操作前 release了该属性，那么还会导致程序崩溃。所以仅仅使用atomic并不会使得线程安全，我们还要为线程添加lock来确保线程的安全。</p>
+<h2 id="二、nonatomic"><a href="#二、nonatomic" class="headerlink" title="二、nonatomic"></a>二、nonatomic</h2><p>非原子性的，在OC中一般都会使用nonatomic，非原子性的。</p>
+<p>为什么OC一般情况下都用nonatomic？</p>
+<p>用nonatomic执行效率更高，不用等到一个线程访问完属性值后另一个线程再去执行；访问nonatomic的属性时，不用经过线程安全的判断，直接访问，速度更快。</p>
+<h2 id="三、atomic和nonatomic比较"><a href="#三、atomic和nonatomic比较" class="headerlink" title="三、atomic和nonatomic比较"></a>三、atomic和nonatomic比较</h2><p>atomic</p>
+<pre><code>•    是默认的
+•    会保证 CPU 能在别的线程来访问这个属性之前，先执行完当前流程
+•    速度不快，因为要保证操作整体完成
+</code></pre><p>nonatomic</p>
+<pre><code>•    不是默认的
+•    更快
+•    线程不安全
+•    如有两个线程访问同一个属性，会出现无法预料的结果
+</code></pre><p>atomic和nonatomic的本质区别在于他们生成的属性setter和getter方法上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//atomic</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">    @synchronized (self); &#123;</span><br><span class="line">        if (_name != name) &#123;</span><br><span class="line">            [_name release];</span><br><span class="line">            _name = [name retain];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">    @synchronized (self) &#123;</span><br><span class="line">        return _name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//nonatomic</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">   if (_name != name) &#123;</span><br><span class="line">       [_name release];</span><br><span class="line">       _name = [name retain];</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">	return _name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>atomic使用了线程同步锁。</p>
+<p>nonatomic未使用线程同步锁，使用的是自旋锁。<br>当一个线程获得锁在给属性赋值时，其他线程将会一直循环在那里查看是否该锁被释放，被释放后继续访问该属性。<br>在锁的持有者保持的时间较短的情况下，使用自旋锁，属性赋值即满足这样的条件。</p>
+<p><a href="https://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">但是自旋锁是不安全的</a></p>
+<p><a href="http://www.cocoachina.com/ios/20161129/18216.html" target="_blank" rel="noopener">关于自旋锁</a></p>
 
       
 
@@ -308,7 +304,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tool</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基本语法</a>
         		</li>
       		
 		</ul>
@@ -318,7 +314,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/25/利用GitHub-Pages搭建简单的博客/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/30/atomic和nonatomic/">展开全文 >></a>
         </p>
       
 
@@ -348,30 +344,42 @@
 
 
   
-    <article id="post-Love-Voice" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-OC深拷贝和浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/25/Love-Voice/">love voice</a>
+      <a class="article-title" href="/2018/03/30/OC深拷贝和浅拷贝/">OC深拷贝和浅拷贝</a>
     </h1>
   
 
         
-        <a href="/2018/01/25/Love-Voice/" class="archive-article-date">
-  	<time datetime="2018-01-25T06:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-25</time>
+        <a href="/2018/03/30/OC深拷贝和浅拷贝/" class="archive-article-date">
+  	<time datetime="2018-03-30T04:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blogImg/hand.jpeg" alt="hand-w320"></p>
-<p>Morris: Hello Hongjuan , I love you so much ! Will you marry me?</p>
-<p>Hong: Yes i am .</p>
-<p>So ,let’s go to moon and take part in a wedding .</p>
+        <h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><p><a href="http://www.cocoachina.com/ios/20141113/10213.html" target="_blank" rel="noopener">参考资料</a></p>
+<p>浅拷贝是对内存地址的复制。深拷贝是拷贝一份内存空间，系统再给该空间分配一个地址，新的地址和内存空间是独立的，不受之前内存空间和地址的影响。</p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>浅拷贝只是对内存地址的复制，让指针指向原来的内存空间，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char* str = (char*)malloc(100);</span><br><span class="line">char* str2 = str;</span><br></pre></td></tr></table></figure></p>
+<p>当内存销毁时，指向这片内存的几个指针需要重新定义才可以使用，要不然会成为野指针。</p>
+<p>在iOS里面，使用retain关键字进行引用计数，就是一种更加保险的浅拷贝。他既让几个指针共用同一片内存空间，又可以在release 由于计数的存在，不会轻易的销毁内存，达到更加简单使用的目的。</p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>深拷贝是指拷贝对象的具体内容，而内存地址是自主分配的，拷贝结束之后，两个对象虽然存的值是相同的，但是内存地址不一样，两个对象也互不影响，互不干涉。</p>
+<h2 id="对于拷贝操作"><a href="#对于拷贝操作" class="headerlink" title="对于拷贝操作"></a>对于拷贝操作</h2><p>[immutableObject copy]; //不可变的对象进行copy，浅拷贝<br>[immutableObject mutableCopy]; //深拷贝<br>[mutableObject copy]; //可变对象执行copy操作，深拷贝<br>[mutableObject mutableCopy]; //深拷贝</p>
+<h2 id="copy和mutableCopy"><a href="#copy和mutableCopy" class="headerlink" title="copy和mutableCopy"></a>copy和mutableCopy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = @”dddd&quot;;</span><br><span class="line">NSString *stringCopy = [string copy];</span><br><span class="line">NSMutableString *stringDCopy = [string mutableCopy];</span><br><span class="line">[stringMCopy appendString:@&quot;!!&quot;];</span><br></pre></td></tr></table></figure>
+<p>string和stringCopy指向的是同一块内存区域(weak reference),引用计数没有发生改变。<br>stringMCopy则是我们所说的真正意义上的复制，系统为其分配了新内存，是两个独立的字符串内容是一样的。<br>也就是说copy是浅拷贝，只是让新的指针指向了原来的内存空间。mutableCopy是拷贝了内存空间，系统给这块内存空间分配了新的指针。</p>
+<p>在iOS中并不是所有的对象都支持copy，mutableCopy，遵守NSCopying协议的类可以发送copy消息，遵守NSMutableCopying协议的类才可以发送mutableCopy消息。</p>
+<h2 id="copy和retain"><a href="#copy和retain" class="headerlink" title="copy和retain"></a>copy和retain</h2><p>copy 是创建一个新对象，retain 是创建一个指针，引用对象计数加一。 copy属性标识两个对象内容相同，新的对象retain count为1, 与旧有对象引用计数无关，旧有对象没有变化。copy减少对象对上下文的依赖。</p>
+<h2 id="已定义copy-mutableCopy"><a href="#已定义copy-mutableCopy" class="headerlink" title="已定义copy/mutableCopy"></a>已定义copy/mutableCopy</h2><p>如果想自定义一下copy那么就必须遵守NSCopying,并且实现 copyWithZone:方法</p>
+<p>如果想自定义一下mutableCopy 那么就必须遵守NSMutableCopying,并且实现mutableCopyWithZone:方法。</p>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@interface MyObj : NSObject&lt;NSCopying, NSMutableCopying&gt;&#123;</span><br><span class="line">    NSMutableString *_name;</span><br><span class="line">    NSString *_imutableStr ;</span><br><span class="line">    int _age;</span><br><span class="line">&#125;     </span><br><span class="line">@property (nonatomic, retain) NSMutableString *name;</span><br><span class="line">@property (nonatomic, retain) NSString *imutableStr;</span><br><span class="line">@property (nonatomic) int age;</span><br></pre></td></tr></table></figure></p>
+<p>copy拷贝构造<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (id)copyWithZone:(NSZone *)zone&#123;</span><br><span class="line">    MyObj *copy = [[[self class] allocWithZone :zone] init];</span><br><span class="line">    copy-&gt;name = [_name copy];</span><br><span class="line">    copy-&gt;imutableStr = [_imutableStr copy];</span><br><span class="line">    copy-&gt;age = age;</span><br><span class="line">    return copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>mutableCopy拷贝构造<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (id)mutableCopyWithZone:(NSZone *)zone&#123;</span><br><span class="line">    MyObj *copy = NSCopyObject(self, 0, zone);</span><br><span class="line">    copy-&gt;name = [_name mutableCopy];</span><br><span class="line">    copy-&gt;age = age;</span><br><span class="line">    return copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -385,7 +393,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">love</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基本语法</a>
         		</li>
       		
 		</ul>
@@ -395,7 +403,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/25/Love-Voice/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/30/OC深拷贝和浅拷贝/">展开全文 >></a>
         </p>
       
 
@@ -427,7 +435,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
@@ -530,19 +538,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OC_应用场景</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OC_基础知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OC_错误_BAD_ACCESS</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">三角函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UIView frame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,7 +570,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">App性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
