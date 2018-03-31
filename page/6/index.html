@@ -142,6 +142,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Implicit-declaration-of-function-xxx-is-invalid" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/31/Implicit-declaration-of-function-xxx-is-invalid/">Implicit declaration of function &#39;xxx&#39; is invalid</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/31/Implicit-declaration-of-function-xxx-is-invalid/" class="archive-article-date">
+  	<time datetime="2018-03-31T07:37:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Implicit-declaration-of-function-‘xxx’-is-invalid"><a href="#Implicit-declaration-of-function-‘xxx’-is-invalid" class="headerlink" title="Implicit declaration of function ‘xxx’ is invalid"></a>Implicit declaration of function ‘xxx’ is invalid</h1><h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p>警告<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Implicit declaration of function &apos;Swap&apos; is invalid</span><br></pre></td></tr></table></figure></p>
+<p>报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Conflicting types for &apos;Swap&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="出现情况"><a href="#出现情况" class="headerlink" title="出现情况"></a>出现情况</h2><p>这样写报警告和错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">void BubbleSort (int a[], int n) &#123;</span><br><span class="line">    for (int i = 0; i &lt; n-1; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; n-1-j; j++) &#123;</span><br><span class="line">            if (a[j] &gt; a[j+1]) &#123;</span><br><span class="line">                Swap(a, j, j+1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void Swap (int a[], int i, int j) &#123;</span><br><span class="line">    int temp = a[i];</span><br><span class="line">    a[i] = a[j];</span><br><span class="line">    a[j] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>如果两个方法如果两个函数有相互递归的话，添加前向声明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/* forward declarations */</span><br><span class="line">void BubbleSort (int a[], int n);</span><br><span class="line">void Swap (int a[], int i, int j);</span><br><span class="line">/* definitions */</span><br><span class="line">void BubbleSort (int a[], int n) &#123;</span><br><span class="line">    for (int i = 0; i &lt; n-1; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; n-1-j; j++) &#123;</span><br><span class="line">            if (a[j] &gt; a[j+1]) &#123;</span><br><span class="line">                Swap(a, j, j+1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void Swap (int a[], int i, int j) &#123;</span><br><span class="line">    int temp = a[i];</span><br><span class="line">    a[i] = a[j];</span><br><span class="line">    a[j] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基础语法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/31/Implicit-declaration-of-function-xxx-is-invalid/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-属性和成员变量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -313,94 +391,6 @@
 
 
   
-    <article id="post-OC-扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/30/OC-扩展/">OC-扩展</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/30/OC-扩展/" class="archive-article-date">
-  	<time datetime="2018-03-30T04:24:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><p>extension</p>
-<h2 id="创建扩展文件extension"><a href="#创建扩展文件extension" class="headerlink" title="创建扩展文件extension"></a>创建扩展文件extension</h2><p>创建分类时，只会生成 类名+(描述).h 文件，没有源文件</p>
-<p>当创建一个类的分类，生成 类名+分类描述.h的文件后，再去创建同样名称的扩展（extension），就会发现，创建不了，或者创建后，就是分类的.h文件。</p>
-<h2 id="类自带的扩展"><a href="#类自带的扩展" class="headerlink" title="类自带的扩展"></a>类自带的扩展</h2><p>扩展其实很简单，我们OC的每个类的源文件中都有扩展，目的是提供我们扩展属性，比如ViewController<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface ViewController ()</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
-<p>我们会在里面增加成员变量、属性和方法等，都是可以的。</p>
-<p>这里引用别人的话：“从Xcode 4 之后就推荐在自定义类的.m文件中使用扩展,这样就能保证良好的代码封装性，避免把私有接口暴露给外面。”</p>
-<h2 id="扩展的作用"><a href="#扩展的作用" class="headerlink" title="扩展的作用"></a>扩展的作用</h2><p>扩展其实就是为一个类添加额外的方法或者属性，这些方法和属性是私有的。</p>
-<p>类扩展是在.m文件中声明私有方法非常好的方式。</p>
-<p>类扩展中的声明的方法与在类中声明的方法是完全一致的，需要在该类的@implementation中实现，该方法只在该类内部可见，对外不可见，所以是私有的。</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li><p>Extension中可以定义属性或者变量。Category中不能定义变量，添加的属性需要动态生成setter和getter。</p>
-</li>
-<li><p>在Category中定义的方法可以被子类继承；而Extension中定义的方法和属性不能被子类继承，因为它们是private的。</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基本语法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/30/OC-扩展/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -498,6 +488,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">love</a>
               </li>
              
@@ -526,7 +520,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,10 +545,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
             
             <div class="clearfix"></div>

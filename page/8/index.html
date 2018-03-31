@@ -142,6 +142,111 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-atomic和nonatomic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/30/atomic和nonatomic/">atomic和nonatomic</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/30/atomic和nonatomic/" class="archive-article-date">
+  	<time datetime="2018-03-30T04:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="atomic和nonatomic"><a href="#atomic和nonatomic" class="headerlink" title="atomic和nonatomic"></a>atomic和nonatomic</h1><p><a href="https://stackoverflow.com/questions/588866/whats-the-difference-between-the-atomic-and-nonatomic-attributes" target="_blank" rel="noopener">参考stackOverflow</a></p>
+<h2 id="一、atomic"><a href="#一、atomic" class="headerlink" title="一、atomic"></a>一、atomic</h2><p>atomic 原子的，原子性，在申明属性的时候，如果不用nonatomic，则默认就是atomic。</p>
+<h4 id="1、什么是原子性"><a href="#1、什么是原子性" class="headerlink" title="1、什么是原子性"></a>1、什么是原子性</h4><p>原子性是指不同线程访问同一个数据的时候保证数据的完整性。</p>
+<p>在OC中属性的原子性是指，这个属性在被访问的时候，能够保证“顺序”访问，每次访问都能保证该属性值的完整性。</p>
+<p>对属性的读和写是原子性的。</p>
+<h4 id="2、原子性的作用"><a href="#2、原子性的作用" class="headerlink" title="2、原子性的作用"></a>2、原子性的作用</h4><p>作用就是保证数据的完整性。</p>
+<p>举个例子来说，假设有一个属性name = @”x”，有A、B和C三个线程同时随机的访问name属性，A：[self setName:@”A”]，B:[self setName:@”B”]，C[self name]。</p>
+<p>A和B同时给name赋值，同时C在获取name的值，这个时候如果name属性是atomic，即原子性的，这时候当一个线程访问name的时候，另外的线程都是”等“状态，等本次访问结束后再进行下次访问。如果name是nonatomic非原子性的，这时候三个线程访问name是随机的，有可能在A给name赋值的时候，C同时也在取name的值，而B也在给name赋值，出现这种不可预期的情况。</p>
+<p>对于atomic的属性，系统生成的 getter/setter 会保证 get、set 操作的完整性，不受其他线程影响。比如，线程 A 的 getter 方法运行到一半，线程 B 调用了 setter：那么线程 A 的 getter 还是能得到一个完好无损的对象。</p>
+<h4 id="3、原子性一定是线程安全的吗"><a href="#3、原子性一定是线程安全的吗" class="headerlink" title="3、原子性一定是线程安全的吗"></a>3、原子性一定是线程安全的吗</h4><p>原子性不一定就能保证线程安全。</p>
+<p>比如，当A访问name的时候，将name这个属性给提前释放掉了，这时候，B和C访问的时候就会造成程序闪退。</p>
+<p>nonatomic的内存管理语义是非原子性的，非原子性的操作本来就是线程不安全的，而atomic的操作是原子性的，但是并不意味着它是线程安全的，它会增加正确的几率，能够更好的避免线程的错误，但是它仍然是线程不安全的。</p>
+<p>当A线程的写操作结束后，B线程进行写操作，然后当A线程需要读操作时，却获得了在B线程中的值，这就破坏了线程安全，如果有线程C在A线程读操作前 release了该属性，那么还会导致程序崩溃。所以仅仅使用atomic并不会使得线程安全，我们还要为线程添加lock来确保线程的安全。</p>
+<h2 id="二、nonatomic"><a href="#二、nonatomic" class="headerlink" title="二、nonatomic"></a>二、nonatomic</h2><p>非原子性的，在OC中一般都会使用nonatomic，非原子性的。</p>
+<p>为什么OC一般情况下都用nonatomic？</p>
+<p>用nonatomic执行效率更高，不用等到一个线程访问完属性值后另一个线程再去执行；访问nonatomic的属性时，不用经过线程安全的判断，直接访问，速度更快。</p>
+<h2 id="三、atomic和nonatomic比较"><a href="#三、atomic和nonatomic比较" class="headerlink" title="三、atomic和nonatomic比较"></a>三、atomic和nonatomic比较</h2><p>atomic</p>
+<pre><code>•    是默认的
+•    会保证 CPU 能在别的线程来访问这个属性之前，先执行完当前流程
+•    速度不快，因为要保证操作整体完成
+</code></pre><p>nonatomic</p>
+<pre><code>•    不是默认的
+•    更快
+•    线程不安全
+•    如有两个线程访问同一个属性，会出现无法预料的结果
+</code></pre><p>atomic和nonatomic的本质区别在于他们生成的属性setter和getter方法上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//atomic</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">    @synchronized (self); &#123;</span><br><span class="line">        if (_name != name) &#123;</span><br><span class="line">            [_name release];</span><br><span class="line">            _name = [name retain];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">    @synchronized (self) &#123;</span><br><span class="line">        return _name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//nonatomic</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">   if (_name != name) &#123;</span><br><span class="line">       [_name release];</span><br><span class="line">       _name = [name retain];</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">	return _name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>atomic使用了线程同步锁。</p>
+<p>nonatomic未使用线程同步锁，使用的是自旋锁。<br>当一个线程获得锁在给属性赋值时，其他线程将会一直循环在那里查看是否该锁被释放，被释放后继续访问该属性。<br>在锁的持有者保持的时间较短的情况下，使用自旋锁，属性赋值即满足这样的条件。</p>
+<p><a href="https://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">但是自旋锁是不安全的</a></p>
+<p><a href="http://www.cocoachina.com/ios/20161129/18216.html" target="_blank" rel="noopener">关于自旋锁</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC_基本语法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/30/atomic和nonatomic/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-OC深拷贝和浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -324,86 +429,6 @@
 
 
   
-    <article id="post-OC实现三角函数的计算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/18/OC实现三角函数的计算/">OC实现三角函数的计算</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/18/OC实现三角函数的计算/" class="archive-article-date">
-  	<time datetime="2018-03-18T07:00:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>系统提供了函数计算三角函数，比如正弦sin()。</p>
-<p>抽象一个类，计算三角函数值。</p>
-<h2 id="Caculator-h"><a href="#Caculator-h" class="headerlink" title="Caculator.h"></a>Caculator.h</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">@interface Caculator : NSObject</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 传入角度计算余弦值</span><br><span class="line"></span><br><span class="line"> @param angle 角度值</span><br><span class="line"> @return 余弦值</span><br><span class="line"> */</span><br><span class="line">+ (double)sinWithAngle:(double)angle;</span><br><span class="line">/**</span><br><span class="line"> 传入象限角计算余弦值</span><br><span class="line"></span><br><span class="line"> @param quadrantAngle 象限角</span><br><span class="line"> @return 余弦值</span><br><span class="line"> */</span><br><span class="line">+ (double)sinWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ (double)cosWithAngle:(double)angle;</span><br><span class="line">+ (double)cosWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line">+ (double)tanWithAngle:(double)angle;</span><br><span class="line">+ (double)tanWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p>一般我们传入一个角度或者直接传入象限角，就可以利用系统函数计算三角函数值。</p>
-<h2 id="Caculator-m"><a href="#Caculator-m" class="headerlink" title="Caculator.m"></a>Caculator.m</h2><p>如果传入的是角度我们需要将角度转化成象限角才能使用系统提供的计算三角函数的函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//将角度转化成象限角的函数</span><br><span class="line">double quadrantAngle (double angle) &#123;</span><br><span class="line">    double a = (angle / 180 ) * M_PI;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>虽然很简单，但是还是上传一下Caculator这个类<a href="https://github.com/MorrisMeng/TrigonometricFunction" target="_blank" rel="noopener">gitHub</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">三角函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/18/OC实现三角函数的计算/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
@@ -501,6 +526,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">love</a>
               </li>
              
@@ -529,7 +558,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,10 +583,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
             
             <div class="clearfix"></div>

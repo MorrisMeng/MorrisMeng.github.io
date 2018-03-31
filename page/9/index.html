@@ -142,6 +142,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-OC实现三角函数的计算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/18/OC实现三角函数的计算/">OC实现三角函数的计算</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/18/OC实现三角函数的计算/" class="archive-article-date">
+  	<time datetime="2018-03-18T07:00:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>系统提供了函数计算三角函数，比如正弦sin()。</p>
+<p>抽象一个类，计算三角函数值。</p>
+<h2 id="Caculator-h"><a href="#Caculator-h" class="headerlink" title="Caculator.h"></a>Caculator.h</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">@interface Caculator : NSObject</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 传入角度计算余弦值</span><br><span class="line"></span><br><span class="line"> @param angle 角度值</span><br><span class="line"> @return 余弦值</span><br><span class="line"> */</span><br><span class="line">+ (double)sinWithAngle:(double)angle;</span><br><span class="line">/**</span><br><span class="line"> 传入象限角计算余弦值</span><br><span class="line"></span><br><span class="line"> @param quadrantAngle 象限角</span><br><span class="line"> @return 余弦值</span><br><span class="line"> */</span><br><span class="line">+ (double)sinWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ (double)cosWithAngle:(double)angle;</span><br><span class="line">+ (double)cosWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line">+ (double)tanWithAngle:(double)angle;</span><br><span class="line">+ (double)tanWithQuadrantAngle:(double)quadrantAngle;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>一般我们传入一个角度或者直接传入象限角，就可以利用系统函数计算三角函数值。</p>
+<h2 id="Caculator-m"><a href="#Caculator-m" class="headerlink" title="Caculator.m"></a>Caculator.m</h2><p>如果传入的是角度我们需要将角度转化成象限角才能使用系统提供的计算三角函数的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//将角度转化成象限角的函数</span><br><span class="line">double quadrantAngle (double angle) &#123;</span><br><span class="line">    double a = (angle / 180 ) * M_PI;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然很简单，但是还是上传一下Caculator这个类<a href="https://github.com/MorrisMeng/TrigonometricFunction" target="_blank" rel="noopener">gitHub</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">三角函数</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/18/OC实现三角函数的计算/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-OC实现一个单链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -295,94 +375,6 @@
 
 
   
-    <article id="post-tableView多种类型的cell处理办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/01/tableView多种类型的cell处理办法/">tableView多种类型的cell处理办法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/01/tableView多种类型的cell处理办法/" class="archive-article-date">
-  	<time datetime="2018-03-01T13:12:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一般思路"><a href="#一般思路" class="headerlink" title="一般思路"></a>一般思路</h2><p>判断不同的行返回各自不同的cell就行了，这种思路很容易理解，适用于简单的tableView。但是会导致返回cell的方法里各种判断。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    CellModel *model = self.dataSource[indexPath.row];</span><br><span class="line">    </span><br><span class="line">    //只有title</span><br><span class="line">    if (indexPath.row &lt; 4) &#123;</span><br><span class="line">        NSString *cellID = @&quot;ViewController_TitleCell&quot;;</span><br><span class="line">        TitleCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];</span><br><span class="line">        if (!cell) &#123;</span><br><span class="line">            cell = [[TitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];</span><br><span class="line">        &#125;</span><br><span class="line">        cell.titleLabel.text = model.title;</span><br><span class="line">        </span><br><span class="line">        return cell;</span><br><span class="line">    &#125;</span><br><span class="line">    //只有图标</span><br><span class="line">    else if (indexPath.row == 4 || indexPath.row == 5) &#123;</span><br><span class="line">        NSString *cellID = @&quot;ViewController_ImageCell&quot;;</span><br><span class="line">        ImageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];</span><br><span class="line">        if (!cell) &#123;</span><br><span class="line">            cell = [[ImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];</span><br><span class="line">        &#125;</span><br><span class="line">        cell.imgView.image = model.image;</span><br><span class="line"></span><br><span class="line">        return cell;</span><br><span class="line">    &#125;</span><br><span class="line">    //既有图标，又有title</span><br><span class="line">    else &#123;</span><br><span class="line">        NSString *cellID = @&quot;ViewController_TitleImageCell&quot;;</span><br><span class="line">        TitleImageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];</span><br><span class="line">        if (!cell) &#123;</span><br><span class="line">            cell = [[TitleImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];</span><br><span class="line">        &#125;</span><br><span class="line">        cell.titleLabel.text = model.title;</span><br><span class="line">        cell.imgView.image = model.image;</span><br><span class="line">        </span><br><span class="line">        return cell;</span><br><span class="line">    &#125;</span><br><span class="line">    return nil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="简化tableView的代理方法"><a href="#简化tableView的代理方法" class="headerlink" title="简化tableView的代理方法"></a>简化tableView的代理方法</h2><ul>
-<li><p>不同类型的cell继承BaseCell实现多态赋值</p>
-</li>
-<li><p>在处理model数据的时候就把cell的cellReusedId处理好</p>
-</li>
-<li><p>cell的类名作复用id</p>
-</li>
-<li><p>直接从数据源中取对应的cellReusedId，拿到对应类型的cell</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    //1、取出数据源</span><br><span class="line">    Person *p = self.dataSource[indexPath.row];</span><br><span class="line">    //2、根据不同的复用标识取出对应的cell</span><br><span class="line">    BaseCell *cell = nil;</span><br><span class="line">    cell = [tableView dequeueReusableCellWithIdentifier:p.cellReusedId];</span><br><span class="line">    //3、给cell赋值</span><br><span class="line">    [cell setPerson:p];</span><br><span class="line">    </span><br><span class="line">    return cell;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p><a href="https://github.com/MorrisMeng/MultipleCells" target="_blank" rel="noopener">实现过程和代码示例</a></p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>只是一种思路而已，人是活的，代码是跳动的精灵，没有最好，只有更好！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tableView</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/01/tableView多种类型的cell处理办法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
@@ -480,6 +472,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">love</a>
               </li>
              
@@ -508,7 +504,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OC_基础语法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,10 +529,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OC_运行时</a>
               </li>
             
             <div class="clearfix"></div>
